@@ -1,20 +1,41 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { STATS, type StatItem } from "@/data/siteData";
+import { useTranslations } from "next-intl";
 
-interface StatsBarProps {
-  stats?: StatItem[];
-}
+export default function StatsBar() {
+  const t = useTranslations("stats");
 
-export default function StatsBar({ stats = STATS }: StatsBarProps) {
+  const statItems = [
+    {
+      value: t("stat1Value"),
+      label: t("stat1Label"),
+      sub: "Hubballi & Beyond",
+    },
+    {
+      value: t("stat2Value"),
+      label: t("stat2Label"),
+      sub: "Web, AI & Software",
+    },
+    {
+      value: t("stat3Value"),
+      label: t("stat3Label"),
+      sub: "Startopia & TextYourBoss",
+    },
+    {
+      value: t("stat4Value"),
+      label: t("stat4Label"),
+      sub: "Enterprise Reliability",
+    },
+  ];
+
   return (
     <section className="relative py-12 border-y border-white/[0.08] bg-[#070b13]/80 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {stats.map((stat, index) => (
+          {statItems.map((stat, index) => (
             <motion.div
-              key={stat.id || index}
+              key={index}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -30,7 +51,7 @@ export default function StatsBar({ stats = STATS }: StatsBarProps) {
                 {stat.label}
               </h3>
               <p className="text-xs text-zinc-400 mt-1 max-w-[200px] leading-relaxed">
-                {stat.description}
+                {stat.sub}
               </p>
             </motion.div>
           ))}

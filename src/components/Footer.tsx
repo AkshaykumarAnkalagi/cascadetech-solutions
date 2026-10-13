@@ -1,9 +1,13 @@
-import NextLink from "next/link";
-import { Mail, MapPin, ArrowUpRight, ShieldCheck, Heart } from "lucide-react";
-import { SITE_INFO, SERVICES, PROJECTS } from "@/data/siteData";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
+import { Mail, MapPin, ArrowUpRight, ShieldCheck } from "lucide-react";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const t = useTranslations("footer");
+  const tCommon = useTranslations("common");
+  const tNav = useTranslations("nav");
 
   return (
     <footer className="relative bg-[#030509] border-t border-white/[0.08] pt-16 pb-12 overflow-hidden">
@@ -14,7 +18,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/[0.07]">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-5">
-            <NextLink href="/" className="inline-flex items-center gap-2.5">
+            <Link href="/" className="inline-flex items-center gap-2.5">
               <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 p-[1.5px]">
                 <div className="w-full h-full bg-[#05070E] rounded-[7px] flex items-center justify-center">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F2FE] to-white font-extrabold text-lg">
@@ -24,103 +28,127 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-white font-bold tracking-tight text-lg">
-                  {SITE_INFO.name}
+                  CascadeTech
                 </span>
                 <span className="text-[10px] tracking-widest uppercase font-semibold text-zinc-400 -mt-1">
                   Solutions
                 </span>
               </div>
-            </NextLink>
+            </Link>
 
             <p className="text-sm text-zinc-400 max-w-sm leading-relaxed">
-              &ldquo;{SITE_INFO.tagline}&rdquo; — Engineering high-scale software, bespoke web applications, and applied AI systems for companies ready to lead.
+              &ldquo;{tCommon("tagline")}&rdquo;
             </p>
 
             <div className="space-y-2.5 pt-2">
               <div className="flex items-start gap-3 text-xs text-zinc-300">
                 <MapPin className="w-4 h-4 text-[#00F2FE] shrink-0 mt-0.5" />
-                <span>{SITE_INFO.address}</span>
+                <span>{tCommon("location")}</span>
               </div>
               <div className="flex items-center gap-3 text-xs text-zinc-300">
                 <Mail className="w-4 h-4 text-[#00F2FE] shrink-0" />
                 <a
-                  href={`mailto:${SITE_INFO.email}`}
+                  href={`mailto:${tCommon("email")}`}
                   className="hover:text-[#00F2FE] transition-colors underline-offset-4 hover:underline"
                 >
-                  {SITE_INFO.email}
+                  {tCommon("email")}
                 </a>
               </div>
+            </div>
+
+            {/* Language Switcher in Footer */}
+            <div className="pt-2">
+              <p className="text-[11px] font-mono uppercase text-zinc-400 mb-2">
+                {tNav("selectLanguage")}:
+              </p>
+              <LanguageSwitcher />
             </div>
           </div>
 
           {/* Quick Navigation */}
           <div>
             <h4 className="text-xs uppercase font-bold tracking-widest text-zinc-300 mb-4">
-              Navigation
+              {tNav("home")} & Navigation
             </h4>
             <ul className="space-y-2.5 text-sm text-zinc-400">
               <li>
-                <NextLink href="/" className="hover:text-white transition-colors">
-                  Home
-                </NextLink>
+                <Link href="/" className="hover:text-white transition-colors">
+                  {tNav("home")}
+                </Link>
               </li>
               <li>
-                <NextLink href="/work" className="hover:text-white transition-colors">
-                  Selected Work
-                </NextLink>
+                <Link href="/work" className="hover:text-white transition-colors">
+                  {tNav("work")}
+                </Link>
               </li>
               <li>
-                <NextLink href="/services" className="hover:text-white transition-colors">
-                  Capabilities & Services
-                </NextLink>
+                <Link href="/services" className="hover:text-white transition-colors">
+                  {tNav("services")}
+                </Link>
               </li>
               <li>
-                <NextLink href="/about" className="hover:text-white transition-colors">
-                  About CascadeTech
-                </NextLink>
+                <Link href="/about" className="hover:text-white transition-colors">
+                  {tNav("about")}
+                </Link>
               </li>
               <li>
-                <NextLink href="/contact" className="hover:text-white transition-colors">
-                  Contact & Inquiries
-                </NextLink>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  {tNav("contact")}
+                </Link>
               </li>
               <li>
-                <NextLink
+                <a
                   href="/studio"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-xs inline-flex items-center gap-1 text-[#00F2FE]/80 hover:text-[#00F2FE] pt-1"
                 >
-                  <span>CMS Studio Login</span>
+                  <span>{t("studioLink")}</span>
                   <ArrowUpRight className="w-3 h-3" />
-                </NextLink>
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Core Services */}
           <div>
             <h4 className="text-xs uppercase font-bold tracking-widest text-zinc-300 mb-4">
-              Core Services
+              {tNav("services")}
             </h4>
             <ul className="space-y-2.5 text-sm text-zinc-400">
-              {SERVICES.slice(0, 5).map((srv) => (
-                <li key={srv.id}>
-                  <NextLink
-                    href={`/services#${srv.slug}`}
-                    className="hover:text-[#00F2FE] transition-colors line-clamp-1"
-                  >
-                    {srv.title}
-                  </NextLink>
-                </li>
-              ))}
               <li>
-                <NextLink
+                <Link href="/services#custom-website-development" className="hover:text-[#00F2FE] transition-colors line-clamp-1">
+                  Website Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#web-design-ui-ux" className="hover:text-[#00F2FE] transition-colors line-clamp-1">
+                  Web Design & UI/UX
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#custom-software-development" className="hover:text-[#00F2FE] transition-colors line-clamp-1">
+                  Software Development
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#ai-chatbot-development" className="hover:text-[#00F2FE] transition-colors line-clamp-1">
+                  AI & Chatbot
+                </Link>
+              </li>
+              <li>
+                <Link href="/services#digital-transformation" className="hover:text-[#00F2FE] transition-colors line-clamp-1">
+                  Digital Transformation
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/services"
                   className="text-xs text-[#00F2FE] hover:underline inline-flex items-center gap-1 pt-1"
                 >
-                  <span>All Services (7)</span>
+                  <span>All 7 Services</span>
                   <ArrowUpRight className="w-3 h-3" />
-                </NextLink>
+                </Link>
               </li>
             </ul>
           </div>
@@ -128,39 +156,52 @@ export default function Footer() {
           {/* Live Flagship Products */}
           <div>
             <h4 className="text-xs uppercase font-bold tracking-widest text-zinc-300 mb-4">
-              Live Products
+              {tCommon("liveProducts")}
             </h4>
             <ul className="space-y-3 text-sm text-zinc-400">
-              {PROJECTS.map((prod) => (
-                <li key={prod.id} className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
-                  <NextLink
-                    href={`/work#${prod.slug}`}
-                    className="text-white font-semibold text-sm hover:text-[#00F2FE] flex items-center justify-between"
-                  >
-                    <span>{prod.title}</span>
-                    <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-950/80 text-[#00F2FE] border border-cyan-800/40">
-                      Live
-                    </span>
-                  </NextLink>
-                  <p className="text-xs text-zinc-400 mt-1 line-clamp-2">
-                    {prod.shortDescription}
-                  </p>
-                </li>
-              ))}
+              <li className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+                <Link
+                  href="/work#startopia"
+                  className="text-white font-semibold text-sm hover:text-[#00F2FE] flex items-center justify-between"
+                >
+                  <span>Startopia</span>
+                  <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-950/80 text-[#00F2FE] border border-cyan-800/40">
+                    Live
+                  </span>
+                </Link>
+                <p className="text-xs text-zinc-400 mt-1 line-clamp-2">
+                  Founder ecosystem platform
+                </p>
+              </li>
+
+              <li className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+                <Link
+                  href="/work#textyourboss"
+                  className="text-white font-semibold text-sm hover:text-[#00F2FE] flex items-center justify-between"
+                >
+                  <span>TextYourBoss.ai</span>
+                  <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-950/80 text-[#00F2FE] border border-cyan-800/40">
+                    Live
+                  </span>
+                </Link>
+                <p className="text-xs text-zinc-400 mt-1 line-clamp-2">
+                  AI communication & workflow
+                </p>
+              </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
-          <p>© {currentYear} {SITE_INFO.name}. All rights reserved.</p>
+          <p>© {currentYear} CascadeTech Solutions. {t("rights")}</p>
           <div className="flex items-center gap-6 text-zinc-400">
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-[#00F2FE]" />
-              Enterprise Grade Security
+              Enterprise Security
             </span>
             <span>•</span>
-            <span>Hubballi, Karnataka, India</span>
+            <span>{t("madeWith")}</span>
           </div>
         </div>
       </div>

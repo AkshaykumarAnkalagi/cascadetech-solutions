@@ -1,31 +1,60 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight } from "lucide-react";
-import { PROCESS_STEPS } from "@/data/siteData";
+import { useTranslations } from "next-intl";
+import { CheckCircle2 } from "lucide-react";
 
 export default function ProcessSection() {
+  const t = useTranslations("process");
+
+  const steps = [
+    {
+      num: t("step1Num"),
+      title: t("step1Title"),
+      desc: t("step1Desc"),
+      deliverable: "Architecture Blueprint & Scope",
+    },
+    {
+      num: t("step2Num"),
+      title: t("step2Title"),
+      desc: t("step2Desc"),
+      deliverable: "UI Prototypes & Schema Specs",
+    },
+    {
+      num: t("step3Num"),
+      title: t("step3Title"),
+      desc: t("step3Desc"),
+      deliverable: "Production Sprints & CI/CD",
+    },
+    {
+      num: t("step4Num"),
+      title: t("step4Title"),
+      desc: t("step4Desc"),
+      deliverable: "Live Launch & High Availability",
+    },
+  ];
+
   return (
     <section className="py-24 relative overflow-hidden bg-[#05070e] border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/20 text-[#00F2FE] text-xs font-mono font-semibold tracking-wider uppercase">
-            <span>Execution Framework</span>
+            <span>{t("eyebrow")}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Our 4-Step <span className="text-gradient-cyan">Engineering Process</span>
+            {t("title")}
           </h2>
           <p className="text-base text-zinc-300 leading-relaxed">
-            Predictable sprints, radical architectural transparency, and institutional-grade code standards ensure zero surprises from concept to launch.
+            {t("subtitle")}
           </p>
         </div>
 
         {/* 4 Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative">
-          {PROCESS_STEPS.map((step, idx) => (
+          {steps.map((step, idx) => (
             <motion.div
-              key={step.step}
+              key={step.num}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -36,7 +65,7 @@ export default function ProcessSection() {
               <div>
                 <div className="flex items-center justify-between mb-5">
                   <span className="text-2xl font-mono font-extrabold text-[#00F2FE] group-hover:scale-110 transition-transform">
-                    {step.step}
+                    {step.num}
                   </span>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.06]">
                     Phase {idx + 1}
@@ -50,21 +79,19 @@ export default function ProcessSection() {
 
                 {/* Description */}
                 <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-6">
-                  {step.description}
+                  {step.desc}
                 </p>
               </div>
 
               {/* Deliverables list */}
               <div className="pt-4 border-t border-white/[0.06] space-y-2">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 block mb-1">
-                  Key Deliverables:
+                  Deliverable:
                 </span>
-                {step.deliverables.map((deliv, dIdx) => (
-                  <div key={dIdx} className="flex items-start gap-2 text-xs text-zinc-300">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00F2FE] shrink-0 mt-0.5" />
-                    <span className="line-clamp-1">{deliv}</span>
-                  </div>
-                ))}
+                <div className="flex items-start gap-2 text-xs text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00F2FE] shrink-0 mt-0.5" />
+                  <span className="line-clamp-1">{step.deliverable}</span>
+                </div>
               </div>
             </motion.div>
           ))}

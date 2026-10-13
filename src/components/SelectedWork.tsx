@@ -1,15 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import NextLink from "next/link";
-import { ArrowUpRight, CheckCircle2, Layers, Sparkles, ExternalLink } from "lucide-react";
-import { PROJECTS, type ProjectItem } from "@/data/siteData";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
+import { ArrowUpRight, CheckCircle2, Sparkles, ExternalLink } from "lucide-react";
 
-interface SelectedWorkProps {
-  projects?: ProjectItem[];
-}
+export default function SelectedWork() {
+  const t = useTranslations("work");
 
-export default function SelectedWork({ projects = PROJECTS }: SelectedWorkProps) {
+  const projects = [
+    {
+      id: "startopia",
+      slug: "startopia",
+      title: t("startopiaTitle"),
+      category: t("startopiaCategory"),
+      tagline: "Startups • Accelerators • Operations",
+      status: t("badgeLive"),
+      description: t("startopiaDesc"),
+      features: [
+        t("startopiaFeat1"),
+        t("startopiaFeat2"),
+        t("startopiaFeat3"),
+      ],
+      techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "Prisma"],
+      link: "https://startopia.in",
+    },
+    {
+      id: "textyourboss",
+      slug: "textyourboss",
+      title: t("textYourBossTitle"),
+      category: t("textYourBossCategory"),
+      tagline: "Corporate AI • Workflow • Communications",
+      status: t("badgeLive"),
+      description: t("textYourBossDesc"),
+      features: [
+        t("textYourBossFeat1"),
+        t("textYourBossFeat2"),
+        t("textYourBossFeat3"),
+      ],
+      techStack: ["Next.js 15", "LangChain", "OpenAI / Claude", "FastAPI", "Vector DB"],
+      link: "https://textyourboss.ai",
+    },
+  ];
+
   return (
     <section id="work" className="py-24 relative overflow-hidden">
       {/* Background radial accent */}
@@ -22,23 +55,23 @@ export default function SelectedWork({ projects = PROJECTS }: SelectedWorkProps)
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#00F2FE]">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Flagship Deployments</span>
+              <span>{t("eyebrow")}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-              Selected Work & <span className="text-gradient-cyan">Live Products</span>
+              {t("title")}
             </h2>
             <p className="text-base text-zinc-300 max-w-xl">
-              We don&rsquo;t just build client solutions; we engineer and scale proprietary market-leading platforms in active global circulation.
+              {t("subtitle")}
             </p>
           </div>
 
-          <NextLink
+          <Link
             href="/work"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#00F2FE] hover:text-white transition-colors group"
           >
-            <span>Explore All Work & Pipeline</span>
+            <span>{t("ctaCaseStudy")}</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </NextLink>
+          </Link>
         </div>
 
         {/* Project Cards Grid */}
@@ -74,16 +107,16 @@ export default function SelectedWork({ projects = PROJECTS }: SelectedWorkProps)
 
                 {/* Description */}
                 <p className="text-sm text-zinc-300 leading-relaxed mb-6">
-                  {project.shortDescription}
+                  {project.description}
                 </p>
 
                 {/* Key Features */}
                 <div className="mb-6 space-y-2.5">
                   <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
-                    Key Features:
+                    Key Highlights:
                   </h4>
                   <ul className="space-y-2">
-                    {project.keyFeatures.slice(0, 3).map((feat, fIdx) => (
+                    {project.features.map((feat, fIdx) => (
                       <li key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
                         <CheckCircle2 className="w-4 h-4 text-[#00F2FE] shrink-0 mt-0.5" />
                         <span>{feat}</span>
@@ -112,13 +145,13 @@ export default function SelectedWork({ projects = PROJECTS }: SelectedWorkProps)
                 </div>
 
                 <div className="flex items-center justify-between gap-4">
-                  <NextLink
+                  <Link
                     href={`/work#${project.slug}`}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-white/[0.06] hover:bg-[#00F2FE] hover:text-black transition-all duration-300 border border-white/[0.12] hover:border-transparent group/btn"
                   >
-                    <span>View Case Study</span>
+                    <span>{t("ctaCaseStudy")}</span>
                     <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </NextLink>
+                  </Link>
 
                   {project.link && (
                     <a

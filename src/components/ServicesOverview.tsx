@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import NextLink from "next/link";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import {
   Globe,
   Palette,
@@ -13,23 +14,55 @@ import {
   ArrowRight,
   ChevronRight,
 } from "lucide-react";
-import { SERVICES, type ServiceItem } from "@/data/siteData";
 
-const ICON_MAP: Record<string, React.ElementType> = {
-  Globe,
-  Palette,
-  Cpu,
-  Bot,
-  Sparkles,
-  GraduationCap,
-  RefreshCw,
-};
+export default function ServicesOverview() {
+  const t = useTranslations("services");
 
-interface ServicesOverviewProps {
-  services?: ServiceItem[];
-}
+  const servicesList = [
+    {
+      id: "website-dev",
+      slug: "custom-website-development",
+      title: t("s1Title"),
+      desc: t("s1Desc"),
+      icon: Globe,
+    },
+    {
+      id: "web-design",
+      slug: "web-design-ui-ux",
+      title: t("s2Title"),
+      desc: t("s2Desc"),
+      icon: Palette,
+    },
+    {
+      id: "software-dev",
+      slug: "custom-software-development",
+      title: t("s3Title"),
+      desc: t("s3Desc"),
+      icon: Cpu,
+    },
+    {
+      id: "ai-chatbot",
+      slug: "ai-chatbot-development",
+      title: t("s4Title"),
+      desc: t("s4Desc"),
+      icon: Bot,
+    },
+    {
+      id: "digital-trans",
+      slug: "digital-transformation",
+      title: t("s5Title"),
+      desc: t("s5Desc"),
+      icon: RefreshCw,
+    },
+    {
+      id: "loyalty-programs",
+      slug: "loyalty-program-solutions",
+      title: t("s6Title"),
+      desc: t("s6Desc"),
+      icon: Sparkles,
+    },
+  ];
 
-export default function ServicesOverview({ services = SERVICES }: ServicesOverviewProps) {
   return (
     <section id="services" className="py-24 relative bg-[#04060b] border-t border-white/[0.06]">
       {/* Background glow */}
@@ -39,20 +72,20 @@ export default function ServicesOverview({ services = SERVICES }: ServicesOvervi
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/20 text-[#00F2FE] text-xs font-mono font-semibold tracking-wider uppercase">
-            <span>Engineering Capabilities</span>
+            <span>{t("eyebrow")}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Comprehensive Digital <span className="text-gradient-cyan">Specializations</span>
+            {t("title")}
           </h2>
           <p className="text-base text-zinc-300 leading-relaxed">
-            From modern responsive websites to enterprise software and generative AI pipelines, we deliver intelligent digital assets built to endure.
+            {t("subtitle")}
           </p>
         </div>
 
         {/* 6 Core Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {services.slice(0, 6).map((service, idx) => {
-            const Icon = ICON_MAP[service.iconName] || Cpu;
+          {servicesList.map((service, idx) => {
+            const Icon = service.icon;
 
             return (
               <motion.div
@@ -76,19 +109,19 @@ export default function ServicesOverview({ services = SERVICES }: ServicesOvervi
 
                   {/* Short benefit-focused description */}
                   <p className="text-sm text-zinc-300 leading-relaxed mb-6">
-                    {service.shortDescription}
+                    {service.desc}
                   </p>
                 </div>
 
                 {/* Footer Link */}
                 <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                  <NextLink
+                  <Link
                     href={`/services#${service.slug}`}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-300 group-hover:text-[#00F2FE] transition-colors"
                   >
-                    <span>View Specifications</span>
+                    <span>{t("learnMore")}</span>
                     <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </NextLink>
+                  </Link>
 
                   <span className="text-[10px] font-mono text-zinc-400 uppercase">
                     0{idx + 1}
@@ -101,13 +134,13 @@ export default function ServicesOverview({ services = SERVICES }: ServicesOvervi
 
         {/* View All Services Callout */}
         <div className="mt-14 text-center">
-          <NextLink
+          <Link
             href="/services"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.12] hover:border-cyan-400/40 transition-all"
           >
-            <span>Explore All 7 Services & Engagement Models</span>
+            <span>{t("eyebrow")} — View Detailed Services & Models</span>
             <ArrowRight className="w-4 h-4 text-[#00F2FE]" />
-          </NextLink>
+          </Link>
         </div>
       </div>
     </section>

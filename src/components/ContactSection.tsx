@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   Mail,
   MapPin,
-  Phone,
   Send,
   CheckCircle2,
   AlertCircle,
@@ -13,9 +12,12 @@ import {
   Clock,
   Sparkles,
 } from "lucide-react";
-import { SITE_INFO } from "@/data/siteData";
+import { useTranslations } from "next-intl";
 
 export default function ContactSection() {
+  const t = useTranslations("contact");
+  const tCommon = useTranslations("common");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,14 +54,11 @@ export default function ContactSection() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to submit form.");
+        throw new Error(data.error || t("errorMsg"));
       }
 
       setStatus("success");
-      setFeedbackMessage(
-        data.message ||
-          "Thank you! Your message has been received. Our engineering team will follow up promptly."
-      );
+      setFeedbackMessage(data.message || t("successMsg"));
       setFormData({
         name: "",
         email: "",
@@ -69,7 +68,7 @@ export default function ContactSection() {
     } catch (err: unknown) {
       setStatus("error");
       const errorMessage =
-        err instanceof Error ? err.message : "Something went wrong. Please try again.";
+        err instanceof Error ? err.message : t("errorMsg");
       setFeedbackMessage(errorMessage);
     }
   };
@@ -92,13 +91,13 @@ export default function ContactSection() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/20 text-[#00F2FE] text-xs font-mono font-semibold tracking-wider uppercase">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Start The Conversation</span>
+                <span>{t("eyebrow")}</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                Ready to Build <span className="text-gradient-cyan">Intelligent</span>, Scalable Systems?
+                {t("title")}
               </h2>
               <p className="text-base text-zinc-300 leading-relaxed">
-                Whether you need a custom website, enterprise software platform, or applied AI engine, let&rsquo;s engineer your technical roadmap together.
+                {t("subtitle")}
               </p>
             </div>
 
@@ -111,13 +110,13 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-400">
-                    Direct Email
+                    {t("emailLabelDirect")}
                   </h4>
                   <a
-                    href={`mailto:${SITE_INFO.email}`}
+                    href={`mailto:${tCommon("email")}`}
                     className="text-sm sm:text-base font-semibold text-white hover:text-[#00F2FE] transition-colors break-all"
                   >
-                    {SITE_INFO.email}
+                    {tCommon("email")}
                   </a>
                   <p className="text-[11px] text-zinc-400 mt-0.5">
                     Guaranteed response within 24 business hours
@@ -132,13 +131,10 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-400">
-                    Headquarters
+                    {t("locationLabel")}
                   </h4>
                   <p className="text-sm sm:text-base font-semibold text-white">
-                    {SITE_INFO.address}
-                  </p>
-                  <p className="text-[11px] text-zinc-400 mt-0.5">
-                    Karnataka, India
+                    {tCommon("location")}
                   </p>
                 </div>
               </div>
@@ -146,7 +142,7 @@ export default function ContactSection() {
               {/* SLA badge */}
               <div className="flex items-center gap-2 text-xs text-zinc-300 pt-2 px-1">
                 <Clock className="w-4 h-4 text-[#00F2FE]" />
-                <span>Active Sprint Capacity Available for Q2/Q3 2026</span>
+                <span>{t("hoursValue")}</span>
               </div>
             </div>
           </motion.div>
@@ -161,10 +157,10 @@ export default function ContactSection() {
           >
             <div className="rounded-3xl bg-[#090e17]/90 border border-white/[0.09] p-8 sm:p-10 backdrop-blur-xl shadow-2xl shadow-black/80">
               <h3 className="text-2xl font-bold text-white mb-2">
-                Send an Inquiry
+                {t("submitBtn")}
               </h3>
               <p className="text-xs sm:text-sm text-zinc-400 mb-8">
-                Tell us about your project requirements, target timeline, or architectural challenges.
+                {t("subtitle")}
               </p>
 
               {/* Form Component */}
@@ -176,7 +172,7 @@ export default function ContactSection() {
                       htmlFor="name"
                       className="block text-xs font-mono uppercase tracking-wider text-zinc-300 font-medium"
                     >
-                      Your Name <span className="text-[#00F2FE]">*</span>
+                      {t("nameLabel")} <span className="text-[#00F2FE]">*</span>
                     </label>
                     <input
                       id="name"
@@ -185,7 +181,7 @@ export default function ContactSection() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="e.g. Rahul Sharma"
+                      placeholder={t("namePlaceholder")}
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE] transition-all"
                     />
                   </div>
@@ -196,7 +192,7 @@ export default function ContactSection() {
                       htmlFor="email"
                       className="block text-xs font-mono uppercase tracking-wider text-zinc-300 font-medium"
                     >
-                      Work Email <span className="text-[#00F2FE]">*</span>
+                      {t("emailLabel")} <span className="text-[#00F2FE]">*</span>
                     </label>
                     <input
                       id="email"
@@ -205,7 +201,7 @@ export default function ContactSection() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="rahul@company.com"
+                      placeholder={t("emailPlaceholder")}
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE] transition-all"
                     />
                   </div>
@@ -217,7 +213,7 @@ export default function ContactSection() {
                     htmlFor="company"
                     className="block text-xs font-mono uppercase tracking-wider text-zinc-300 font-medium"
                   >
-                    Company / Organization <span className="text-zinc-500 text-[10px] lowercase">(optional)</span>
+                    {t("companyLabel")}
                   </label>
                   <input
                     id="company"
@@ -225,7 +221,7 @@ export default function ContactSection() {
                     type="text"
                     value={formData.company}
                     onChange={handleChange}
-                    placeholder="e.g. Acme Tech Global"
+                    placeholder={t("companyPlaceholder")}
                     className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE] transition-all"
                   />
                 </div>
@@ -236,7 +232,7 @@ export default function ContactSection() {
                     htmlFor="message"
                     className="block text-xs font-mono uppercase tracking-wider text-zinc-300 font-medium"
                   >
-                    Project Details & Scope <span className="text-[#00F2FE]">*</span>
+                    {t("messageLabel")} <span className="text-[#00F2FE]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -245,7 +241,7 @@ export default function ContactSection() {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Briefly describe what you're building, desired technologies, or existing systems to upgrade..."
+                    placeholder={t("messagePlaceholder")}
                     className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE] transition-all resize-none"
                   />
                 </div>
@@ -259,8 +255,7 @@ export default function ContactSection() {
                   >
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">Inquiry Dispatched Successfully!</p>
-                      <p className="text-xs text-emerald-400/90 mt-0.5">{feedbackMessage}</p>
+                      <p className="font-semibold">{t("successMsg")}</p>
                     </div>
                   </motion.div>
                 )}
@@ -273,8 +268,7 @@ export default function ContactSection() {
                   >
                     <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">Unable to Send Message</p>
-                      <p className="text-xs text-red-400/90 mt-0.5">{feedbackMessage}</p>
+                      <p className="font-semibold">{feedbackMessage || t("errorMsg")}</p>
                     </div>
                   </motion.div>
                 )}
@@ -288,11 +282,11 @@ export default function ContactSection() {
                   {status === "loading" ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>Transmitting Inquiry...</span>
+                      <span>{t("submitting")}</span>
                     </>
                   ) : (
                     <>
-                      <span>Submit Inquiry</span>
+                      <span>{t("submitBtn")}</span>
                       <Send className="w-4 h-4" />
                     </>
                   )}
