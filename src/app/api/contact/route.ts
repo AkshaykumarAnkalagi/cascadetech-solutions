@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 
 export async function POST(request: Request) {
   try {
@@ -34,16 +33,16 @@ export async function POST(request: Request) {
 
     const resendApiKey = process.env.RESEND_API_KEY;
 
-    // Live Resend integration when API key is provided
-    if (resendApiKey && resendApiKey !== "re_your_api_key_here") {
-      const resend = new Resend(resendApiKey);
+    // Live Resend integration via official REST API when API key is provided
+    if (resendApiKey && resendApiKey !== "re_your_api_key_here" && resendApiKey.trim().length > 5) {
+      const fromEmail =
+        process.env.RESEND_FROM_EMAIL ||
+        "CascadeTech Solutions <onboarding@resend.dev>";
 
-      const emailResult = await resend.emails.send({
-        from:
-          process.env.RESEND_FROM_EMAIL ||
-          "CascadeTech Solutions <onboarding@resend.dev>",
+      const emailPayload = {
+        from: fromEmail,
         to: [recipientEmail],
-        replyTo: email,
+        reply_to: email,
         subject: `New Project Inquiry from ${name}${company ? ` (${company})` : ""}`,
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #0b0f19; color: #f8fafc; padding: 32px; border-radius: 12px; border: 1px solid rgba(0, 242, 254, 0.2);">
@@ -83,14 +82,25 @@ export async function POST(request: Request) {
             </div>
           </div>
         `,
+      };
+
+      const resendResponse = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${resendApiKey.trim()}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(emailPayload),
       });
 
-      if (emailResult.error) {
-        console.error("Resend delivery error:", emailResult.error);
+      const resendData = await resendResponse.json();
+
+      if (!resendResponse.ok) {
+        console.error("Resend API delivery error:", resendData);
         return NextResponse.json(
           {
             error: "Failed to send email. Please try again or email us directly.",
-            details: emailResult.error.message,
+            details: resendData.message || resendData.name,
           },
           { status: 500 }
         );

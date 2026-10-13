@@ -1,0 +1,63 @@
+   ▲ Next.js 15.5.27
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.esm.js
+Module not found: Can't resolve '@floating-ui/dom'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/@sanity/ui/dist/_chunks-cjs/_visual-editing.js
+./node_modules/@sanity/ui/dist/_visual-editing.js
+./node_modules/@sanity/visual-editing/dist/react/index.cjs
+./node_modules/next-sanity/dist/_chunks-cjs/VisualEditing.cjs
+./node_modules/next-sanity/dist/visual-editing/client-component.cjs
+
+./node_modules/through2/through2.js
+Module not found: Can't resolve 'readable-stream'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/@sanity/client/node_modules/get-it/dist/_chunks-es/node-request-error.js
+./node_modules/@sanity/client/node_modules/get-it/dist/middleware.js
+./node_modules/@sanity/client/dist/index.js
+./node_modules/@sanity/next-loader/dist/client-components/live.js
+
+./node_modules/@portabletext/react/dist/index.cjs
+Module not found: Can't resolve '@portabletext/toolkit'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/next-sanity/dist/index.cjs
+./src/sanity/client.ts
+./src/app/studio/[[...tool]]/page.tsx
+
+./node_modules/@sanity/client/node_modules/get-it/dist/index.cjs
+Module not found: Can't resolve 'tunnel-agent'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/@sanity/client/dist/index.cjs
+./node_modules/next-sanity/dist/index.cjs
+./src/sanity/client.ts
+./src/app/studio/[[...tool]]/page.tsx
+
+./node_modules/@sanity/ui/dist/_chunks-cjs/_visual-editing.js
+Module not found: Can't resolve 'styled-components'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./node_modules/@sanity/ui/dist/_visual-editing.js
+./node_modules/@sanity/visual-editing/dist/react/index.cjs
+./node_modules/next-sanity/dist/_chunks-cjs/VisualEditing.cjs
+./node_modules/next-sanity/dist/visual-editing/client-component.cjs
+
+
+> Build failed because of webpack errors
