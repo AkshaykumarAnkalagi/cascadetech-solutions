@@ -1,5 +1,3 @@
-import { createClient } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
 import { apiVersion, dataset, projectId, useCdn } from "./env";
 import {
   SITE_INFO,
@@ -14,28 +12,49 @@ import {
 export const isSanityConfigured =
   Boolean(projectId) &&
   projectId !== "your-project-id" &&
-  projectId !== "undefined";
+  projectId !== "undefined" &&
+  projectId.length > 3;
 
-export const sanityClient = isSanityConfigured
-  ? createClient({
-      projectId,
-      dataset,
-      apiVersion,
-      useCdn,
-    })
-  : null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let _sanityClient: any = null;
 
-const builder = isSanityConfigured && sanityClient ? imageUrlBuilder(sanityClient) : null;
+export function getSanityClient() {
+  if (!isSanityConfigured) return null;
+  if (!_sanityClient) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const { createClient } = require("next-sanity");
+      _sanityClient = createClient({
+        projectId,
+        dataset,
+        apiVersion,
+        useCdn,
+      });
+    } catch {
+      _sanityClient = null;
+    }
+  }
+  return _sanityClient;
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function urlFor(source: any) {
-  if (!builder || !source) return null;
-  return builder.image(source);
+  const client = getSanityClient();
+  if (!client || !source) return null;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const imageUrlBuilder = require("@sanity/image-url");
+    const builder = imageUrlBuilder(client);
+    return builder.image(source);
+  } catch {
+    return null;
+  }
 }
 
 // Fetch Services with graceful fallback
 export async function getServices(): Promise<ServiceItem[]> {
-  if (!isSanityConfigured || !sanityClient) {
+  const client = getSanityClient();
+  if (!client) {
     return SERVICES;
   }
   try {
@@ -50,7 +69,7 @@ export async function getServices(): Promise<ServiceItem[]> {
       deliverables,
       techStack
     }`;
-    const result = await sanityClient.fetch<ServiceItem[]>(query);
+    const result = await client.fetch(query);
     return result && result.length > 0 ? result : SERVICES;
   } catch (error) {
     console.warn("Falling back to local services data:", error);
@@ -60,7 +79,8 @@ export async function getServices(): Promise<ServiceItem[]> {
 
 // Fetch Projects with graceful fallback
 export async function getProjects(): Promise<ProjectItem[]> {
-  if (!isSanityConfigured || !sanityClient) {
+  const client = getSanityClient();
+  if (!client) {
     return PROJECTS;
   }
   try {
@@ -80,7 +100,7 @@ export async function getProjects(): Promise<ProjectItem[]> {
       metrics,
       link
     }`;
-    const result = await sanityClient.fetch<ProjectItem[]>(query);
+    const result = await client.fetch(query);
     return result && result.length > 0 ? result : PROJECTS;
   } catch (error) {
     console.warn("Falling back to local projects data:", error);
@@ -90,7 +110,8 @@ export async function getProjects(): Promise<ProjectItem[]> {
 
 // Fetch Stats with graceful fallback
 export async function getStats(): Promise<StatItem[]> {
-  if (!isSanityConfigured || !sanityClient) {
+  const client = getSanityClient();
+  if (!client) {
     return STATS;
   }
   try {
@@ -100,7 +121,7 @@ export async function getStats(): Promise<StatItem[]> {
       label,
       description
     }`;
-    const result = await sanityClient.fetch<StatItem[]>(query);
+    const result = await client.fetch(query);
     return result && result.length > 0 ? result : STATS;
   } catch (error) {
     console.warn("Falling back to local stats data:", error);
@@ -110,7 +131,8 @@ export async function getStats(): Promise<StatItem[]> {
 
 // Fetch Site Settings with graceful fallback
 export async function getSiteSettings() {
-  if (!isSanityConfigured || !sanityClient) {
+  const client = getSanityClient();
+  if (!client) {
     return SITE_INFO;
   }
   try {
@@ -123,7 +145,7 @@ export async function getSiteSettings() {
       navigation,
       seo
     }`;
-    const result = await sanityClient.fetch(query);
+    const result = await client.fetch(query);
     if (!result) return SITE_INFO;
     return {
       ...SITE_INFO,
