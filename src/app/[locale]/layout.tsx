@@ -128,20 +128,14 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} className="dark scroll-smooth">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body className="bg-[#05070e] text-[#f8fafc] antialiased selection:bg-cyan-500/20 selection:text-white min-h-screen flex flex-col justify-between">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </NextIntlClientProvider>
   );
 }
