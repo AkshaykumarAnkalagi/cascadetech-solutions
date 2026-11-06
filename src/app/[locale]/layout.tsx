@@ -107,7 +107,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   // Providing all messages to the client side
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   const jsonLd = {
     "@context": "https://schema.org",
