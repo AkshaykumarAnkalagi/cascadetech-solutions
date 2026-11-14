@@ -66,7 +66,19 @@
     "textYourBossDesc": "An applied generative AI communication platform built to draft high-stakes corporate communication, summarize escalations, and translate intent into professional workplace messaging.",
     "textYourBossFeat1": "Context-Aware Tone & Sentiment Polishing",
     "textYourBossFeat2": "Executive Escalation Summarizer",
-    "textYourBossFeat3": "Enterprise Compliance & Zero Data Leakage"
+    "textYourBossFeat3": "Enterprise Compliance & Zero Data Leakage",
+    "educoreCategory": "ENTERPRISE SCHOOL MANAGEMENT ERP",
+    "educoreTitle": "Educore",
+    "educoreDesc": "Enterprise-grade, multi-tenant school management ERP engineered with statutory compliance for India's DPDP Act 2023, double-entry financial ledgers, and zero-trust tenant isolation.",
+    "educoreFeat1": "Statutory DPDP Act 2023 Data Protection & Consent Workflows",
+    "educoreFeat2": "Double-Entry Fee Ledgers with Pessimistic Concurrency Guardrails",
+    "educoreFeat3": "Zero-Trust Multi-Tenancy with PostgreSQL Row Level Security",
+    "nestoraCategory": "REAL ESTATE & PROPERTY ECOSYSTEM",
+    "nestoraTitle": "Nestora Hub",
+    "nestoraDesc": "Comprehensive property discovery and real estate management ecosystem facilitating seamless buying, selling, and renting across residential and commercial sectors.",
+    "nestoraFeat1": "Curated & Verified Residential and Commercial Listings",
+    "nestoraFeat2": "Intelligent Locality-Wise Search & Virtual Tour Inquiries",
+    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows"
   },
   "services": {
     "eyebrow": "WHAT WE DELIVER",

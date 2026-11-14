@@ -7,12 +7,14 @@ export const config = {
   // Match all pathnames except for
   // - /api routes
   // - /studio routes (Sanity CMS)
+  // - /educore routes (Flagship ERP product)
+  // - /nestorahub routes (Flagship Real Estate product)
   // - /_next (Next.js internals)
   // - /_vercel (Vercel internals)
   // - static files (e.g. /favicon.ico, /images/*, etc.)
   matcher: [
     "/",
     "/(en|hi|kn|te|ta|ml|mr|bn|gu)/:path*",
-    "/((?!api|studio|_next|_vercel|.*\\..*).*)",
+    "/((?!api|studio|educore|nestorahub|_next|_vercel|.*\\..*).*)",
   ],
 };

@@ -29,6 +29,48 @@ function WorkContent() {
 
   const caseStudies = [
     {
+      id: "educore",
+      title: tWork("educoreTitle"),
+      category: tWork("educoreCategory"),
+      status: tWork("badgeLive"),
+      desc: tWork("educoreDesc"),
+      highlights: [
+        tWork("educoreFeat1"),
+        tWork("educoreFeat2"),
+        tWork("educoreFeat3"),
+        "Zero-Trust Tenant Isolation with PostgreSQL Row-Level Security (RLS)",
+        "Audit Trail Logging & Purpose-Bound Data Retention Lifecycle",
+      ],
+      metrics: [
+        { label: "Compliance Benchmark", value: "DPDP 2023" },
+        { label: "Ledger Drift", value: "0.00" },
+        { label: "Tenant Isolation", value: "100%" },
+      ],
+      techStack: ["Next.js 14 App Router", "TypeScript", "Node.js", "Drizzle ORM", "PostgreSQL", "Redis", "BullMQ"],
+      link: "/educore",
+    },
+    {
+      id: "nestora",
+      title: tWork("nestoraTitle"),
+      category: tWork("nestoraCategory"),
+      status: tWork("badgeLive"),
+      desc: tWork("nestoraDesc"),
+      highlights: [
+        tWork("nestoraFeat1"),
+        tWork("nestoraFeat2"),
+        tWork("nestoraFeat3"),
+        "Modular Admin Console with Live Property & Project Publishing",
+        "Optimized Asset Pipeline with Sub-Second Local Search",
+      ],
+      metrics: [
+        { label: "Properties Listed", value: "500+" },
+        { label: "Locality Coverage", value: "Hubli-Dharwad" },
+        { label: "Lead Conversion Rate", value: "3.4x" },
+      ],
+      techStack: ["React", "Vite", "TypeScript", "Tailwind CSS", "shadcn/ui", "Node.js API", "TanStack Query"],
+      link: "/nestorahub",
+    },
+    {
       id: "startopia",
       title: tWork("startopiaTitle"),
       category: tWork("startopiaCategory"),
@@ -132,12 +174,16 @@ function WorkContent() {
 
                 <a
                   href={study.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={study.link.startsWith("http") ? "_blank" : undefined}
+                  rel={study.link.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-black bg-gradient-to-r from-[#00F2FE] to-[#38BDF8] hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] transition-all shrink-0"
                 >
                   <span>Launch Live Platform</span>
-                  <ExternalLink className="w-4 h-4" />
+                  {study.link.startsWith("http") ? (
+                    <ExternalLink className="w-4 h-4" />
+                  ) : (
+                    <ArrowRight className="w-4 h-4" />
+                  )}
                 </a>
               </div>
 

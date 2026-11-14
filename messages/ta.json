@@ -66,7 +66,19 @@
     "textYourBossDesc": "அலுவலக தகவல்தொடர்புகளை தொழில்முறையாக வரைவு செய்யவும், சிக்கலான செய்திகளை சுருக்கவும் உருவாக்கப்பட்ட அறிவார்ந்த AI கருவி.",
     "textYourBossFeat1": "சூழல் சார்ந்த தகவல் மெருகூட்டல்",
     "textYourBossFeat2": "முக்கிய செய்திகள் சுருக்கி",
-    "textYourBossFeat3": "நிறுவன தரவு பாதுகாப்பு மற்றும் இணக்கம்"
+    "textYourBossFeat3": "நிறுவன தரவு பாதுகாப்பு மற்றும் இணக்கம்",
+    "educoreCategory": "ENTERPRISE SCHOOL MANAGEMENT ERP",
+    "educoreTitle": "Educore",
+    "educoreDesc": "Enterprise-grade, multi-tenant school management ERP engineered with statutory compliance for India's DPDP Act 2023, double-entry financial ledgers, and zero-trust tenant isolation.",
+    "educoreFeat1": "Statutory DPDP Act 2023 Data Protection & Consent Workflows",
+    "educoreFeat2": "Double-Entry Fee Ledgers with Pessimistic Concurrency Guardrails",
+    "educoreFeat3": "Zero-Trust Multi-Tenancy with PostgreSQL Row Level Security",
+    "nestoraCategory": "REAL ESTATE & PROPERTY ECOSYSTEM",
+    "nestoraTitle": "Nestora Hub",
+    "nestoraDesc": "Comprehensive property discovery and real estate management ecosystem facilitating seamless buying, selling, and renting across residential and commercial sectors.",
+    "nestoraFeat1": "Curated & Verified Residential and Commercial Listings",
+    "nestoraFeat2": "Intelligent Locality-Wise Search & Virtual Tour Inquiries",
+    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows"
   },
   "services": {
     "eyebrow": "நாங்கள் வழங்குவது",

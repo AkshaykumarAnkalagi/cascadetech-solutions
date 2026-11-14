@@ -10,6 +10,38 @@ export default function SelectedWork() {
 
   const projects = [
     {
+      id: "educore",
+      slug: "educore",
+      title: t("educoreTitle"),
+      category: t("educoreCategory"),
+      tagline: "Statutory DPDP Compliant • Multi-Tenant • Double-Entry Ledgers",
+      status: t("badgeLive"),
+      description: t("educoreDesc"),
+      features: [
+        t("educoreFeat1"),
+        t("educoreFeat2"),
+        t("educoreFeat3"),
+      ],
+      techStack: ["Next.js 14", "TypeScript", "Node.js", "Drizzle ORM", "PostgreSQL", "Redis"],
+      link: "/educore",
+    },
+    {
+      id: "nestora",
+      slug: "nestorahub",
+      title: t("nestoraTitle"),
+      category: t("nestoraCategory"),
+      tagline: "Residential • Commercial • Verified Listings",
+      status: t("badgeLive"),
+      description: t("nestoraDesc"),
+      features: [
+        t("nestoraFeat1"),
+        t("nestoraFeat2"),
+        t("nestoraFeat3"),
+      ],
+      techStack: ["React", "Vite", "TypeScript", "Tailwind CSS", "shadcn/ui", "Node.js"],
+      link: "/nestorahub",
+    },
+    {
       id: "startopia",
       slug: "startopia",
       title: t("startopiaTitle"),
@@ -156,12 +188,16 @@ export default function SelectedWork() {
                   {project.link && (
                     <a
                       href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-[#00F2FE] transition-colors"
+                      target={project.link.startsWith("http") ? "_blank" : undefined}
+                      rel={project.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00F2FE] hover:text-white transition-colors"
                     >
-                      <span>Live Site</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Launch Product</span>
+                      {project.link.startsWith("http") ? (
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      ) : (
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      )}
                     </a>
                   )}
                 </div>

@@ -77,9 +77,9 @@ export const STATS: StatItem[] = [
   },
   {
     id: "products",
-    value: "2",
+    value: "4",
     label: "Live Flagship Products",
-    description: "Startopia & TextYourBoss.ai deployed globally",
+    description: "Educore, Nestora Hub, Startopia & TextYourBoss.ai deployed globally",
   },
   {
     id: "satisfaction",
@@ -90,6 +90,77 @@ export const STATS: StatItem[] = [
 ];
 
 export const PROJECTS: ProjectItem[] = [
+  {
+    id: "educore",
+    slug: "educore",
+    title: "Educore",
+    category: "Enterprise School Management ERP",
+    tagline: "Statutory DPDP Compliant • Multi-Tenant • Double-Entry Ledgers",
+    shortDescription:
+      "Enterprise-grade, multi-tenant school management ERP engineered with statutory compliance for India's DPDP Act 2023, double-entry financial ledgers, and zero-trust tenant isolation.",
+    fullDescription:
+      "Educore provides educational institutions with a secure, highly scalable ERP platform featuring zero-trust tenant isolation, statutory compliance for India's Digital Personal Data Protection Act 2023, immutable financial accounting ledgers with pessimistic locking, and comprehensive student lifecycle management.",
+    metrics: [
+      { label: "DPDP 2023 Compliance", value: "100%" },
+      { label: "Fee Drift Prevention", value: "Zero Loss" },
+      { label: "Sub-second Queries", value: "<150ms" },
+    ],
+    keyFeatures: [
+      "Statutory DPDP Act 2023 consent tracking and AES-256 encrypted PII storage",
+      "Double-entry fee ledger with pessimistic concurrency and zero fee drift",
+      "Multi-tenant defense-in-depth with PostgreSQL Row Level Security (RLS)",
+      "Admissions, academic evaluation, attendance, and role-based staff portals",
+    ],
+    techStack: [
+      "Next.js 14",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Redis",
+      "BullMQ",
+      "Tailwind CSS",
+    ],
+    link: "/educore",
+    status: "Live Product",
+    featured: true,
+    accentColor: "#00F2FE",
+  },
+  {
+    id: "nestora",
+    slug: "nestorahub",
+    title: "Nestora Hub",
+    category: "Real Estate & Property Ecosystem",
+    tagline: "Residential • Commercial • Verified Listings",
+    shortDescription:
+      "Comprehensive property discovery and real estate management ecosystem facilitating seamless buying, selling, and renting across residential and commercial sectors.",
+    fullDescription:
+      "Nestora Hub transforms property search and portfolio management for homeowners, commercial buyers, and real estate developers with verified listings, instant inquiry channels, locality breakdowns, and a unified administrative control center.",
+    metrics: [
+      { label: "Verified Listings", value: "500+" },
+      { label: "Regional Coverage", value: "Hubli-Dharwad" },
+      { label: "Inquiry Turnaround", value: "<2 hrs" },
+    ],
+    keyFeatures: [
+      "Curated residential and commercial listings with rich media and specifications",
+      "Dynamic locality-level search filters and instant consultation scheduling",
+      "Integrated administrator CRM for property lifecycle and lead tracking",
+      "High-speed, responsive frontend optimized for mobile homebuyers",
+    ],
+    techStack: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Node.js",
+      "TanStack Query",
+    ],
+    link: "/nestorahub",
+    status: "Live Product",
+    featured: true,
+    accentColor: "#38BDF8",
+  },
   {
     id: "startopia",
     slug: "startopia",
