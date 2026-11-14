@@ -16,8 +16,10 @@ function formatUrl(url?: string): string | null {
   return withProtocol.replace(/\/+$/, "");
 }
 
-const educoreUrl = formatUrl(process.env.EDUCORE_FRONTEND_URL);
-const nestoraUrl = formatUrl(process.env.NESTORAHUB_FRONTEND_URL);
+const educoreUrl =
+  formatUrl(process.env.EDUCORE_FRONTEND_URL) || "https://edu-core-um1o.onrender.com";
+const nestoraUrl =
+  formatUrl(process.env.NESTORAHUB_FRONTEND_URL) || "https://nestora-egk4.vercel.app";
 
 const nextConfig: NextConfig = {
   ...(isGithubPages ? { output: "export", basePath: "/cascadetech-solutions" } : {}),
@@ -38,10 +40,8 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     if (isGithubPages) return [];
-    const rewritesList = [];
-
-    if (educoreUrl) {
-      rewritesList.push(
+    return {
+      beforeFiles: [
         {
           source: "/educore",
           destination: `${educoreUrl}/educore`,
@@ -49,12 +49,7 @@ const nextConfig: NextConfig = {
         {
           source: "/educore/:path*",
           destination: `${educoreUrl}/educore/:path*`,
-        }
-      );
-    }
-
-    if (nestoraUrl) {
-      rewritesList.push(
+        },
         {
           source: "/nestorahub",
           destination: `${nestoraUrl}/nestorahub`,
@@ -62,11 +57,11 @@ const nextConfig: NextConfig = {
         {
           source: "/nestorahub/:path*",
           destination: `${nestoraUrl}/nestorahub/:path*`,
-        }
-      );
-    }
-
-    return rewritesList;
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
   },
 };
 
