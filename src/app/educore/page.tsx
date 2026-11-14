@@ -9,6 +9,10 @@ export const metadata = {
 export default function EducoreGatewayPage() {
   const isDev = process.env.NODE_ENV === "development";
   const localDevUrl = "http://localhost:3002";
+  const targetUrl =
+    process.env.NEXT_PUBLIC_EDUCORE_URL ||
+    process.env.EDUCORE_FRONTEND_URL ||
+    (isDev ? localDevUrl : "https://cascade-erp.in/educore");
 
   return (
     <div className="min-h-screen bg-[#06090e] text-white flex flex-col justify-between p-6 sm:p-12 relative overflow-hidden font-sans">
@@ -72,16 +76,16 @@ export default function EducoreGatewayPage() {
               <p className="text-xs text-zinc-400">
                 {isDev
                   ? "Local development server detected on port 3002."
-                  : "Connect your deployed Educore Vercel URL via EDUCORE_FRONTEND_URL."}
+                  : "Launch the live SchoolMitra & Educore ERP application."}
               </p>
             </div>
             <a
-              href={isDev ? localDevUrl : "#"}
-              target={isDev ? "_blank" : undefined}
+              href={targetUrl}
+              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-black bg-gradient-to-r from-[#00F2FE] to-[#38BDF8] hover:shadow-[0_0_25px_rgba(0,242,254,0.4)] transition-all shrink-0"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-black bg-gradient-to-r from-[#00F2FE] to-[#38BDF8] hover:shadow-[0_0_25px_rgba(0,242,254,0.4)] transition-all shrink-0 cursor-pointer"
             >
-              <span>{isDev ? "Open Local ERP (Port 3002)" : "Launch Educore"}</span>
+              <span>{isDev ? "Open Local ERP (Port 3002)" : "Open Live Educore Platform"}</span>
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>

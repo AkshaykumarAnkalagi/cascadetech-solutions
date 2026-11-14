@@ -9,6 +9,10 @@ export const metadata = {
 export default function NestoraGatewayPage() {
   const isDev = process.env.NODE_ENV === "development";
   const localDevUrl = "http://localhost:5173";
+  const targetUrl =
+    process.env.NEXT_PUBLIC_NESTORAHUB_URL ||
+    process.env.NESTORAHUB_FRONTEND_URL ||
+    (isDev ? localDevUrl : "https://cascade-erp.in/nestorahub");
 
   return (
     <div className="min-h-screen bg-[#06090e] text-white flex flex-col justify-between p-6 sm:p-12 relative overflow-hidden font-sans">
@@ -71,17 +75,17 @@ export default function NestoraGatewayPage() {
               <h2 className="text-base font-semibold text-white">Direct Application Access</h2>
               <p className="text-xs text-zinc-400">
                 {isDev
-                  ? "Local development server runs on port 5173 (or configure NESTORAHUB_FRONTEND_URL)."
-                  : "Connect your deployed Nestora Vercel URL via NESTORAHUB_FRONTEND_URL."}
+                  ? "Local development server runs on port 5173."
+                  : "Launch the live Nestora Hub Real Estate marketplace."}
               </p>
             </div>
             <a
-              href={isDev ? localDevUrl : "#"}
-              target={isDev ? "_blank" : undefined}
+              href={targetUrl}
+              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-black bg-gradient-to-r from-[#00F2FE] to-[#38BDF8] hover:shadow-[0_0_25px_rgba(0,242,254,0.4)] transition-all shrink-0"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-black bg-gradient-to-r from-[#00F2FE] to-[#38BDF8] hover:shadow-[0_0_25px_rgba(0,242,254,0.4)] transition-all shrink-0 cursor-pointer"
             >
-              <span>{isDev ? "Open Local Nestora (Port 5173)" : "Launch Nestora Hub"}</span>
+              <span>{isDev ? "Open Local Nestora (Port 5173)" : "Open Live Nestora Hub"}</span>
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>
