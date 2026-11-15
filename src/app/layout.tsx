@@ -22,6 +22,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang={routing.defaultLocale} className="dark scroll-smooth">
+      <head>
+        {/* Microsoft Clarity Official Tracking Script */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "ze4cuerold");
+            `,
+          }}
+        />
+      </head>
       <body className="bg-[#05070e] text-[#f8fafc] antialiased selection:bg-cyan-500/20 selection:text-white min-h-screen flex flex-col justify-between">
         <ClarityScript />
         <AnalyticsTracker />
