@@ -3,10 +3,12 @@ import crypto from "crypto";
 export const ADMIN_COOKIE_NAME = "cascade_admin_session";
 const SESSION_DURATION_HOURS = 8;
 
-const ADMIN_USERNAME =
-  process.env.ADMIN_USERNAME || "cascadetechnologiessolutions";
+const VALID_USERNAMES = [
+  (process.env.ADMIN_USERNAME || "cascadetechnologiessolutions").toLowerCase().trim(),
+  "cascadetechnologiessolutions@gmail.com",
+];
 const ADMIN_PASSWORD =
-  process.env.ADMIN_PASSWORD || "P4jkbnixj4@";
+  (process.env.ADMIN_PASSWORD || "P4jkbnixj4@").trim();
 const ADMIN_SECRET =
   process.env.ADMIN_SESSION_SECRET ||
   "cascade-erp-admin-secret-hmac-key-2026-secure";
@@ -17,16 +19,23 @@ export function verifyAdminCredentials(user: string, pass: string): boolean {
   }
 
   try {
-    const userHash = crypto.createHash("sha256").update(user).digest();
-    const expectedUserHash = crypto.createHash("sha256").update(ADMIN_USERNAME).digest();
+    const cleanUser = user.toLowerCase().trim();
+    const cleanPass = pass.trim();
 
-    const passHash = crypto.createHash("sha256").update(pass).digest();
+    // Verify username against allowed usernames
+    const isUserValid = VALID_USERNAMES.some((validUser) => {
+      const userHash = crypto.createHash("sha256").update(cleanUser).digest();
+      const expectedHash = crypto.createHash("sha256").update(validUser).digest();
+      return crypto.timingSafeEqual(userHash, expectedHash);
+    });
+
+    if (!isUserValid) return false;
+
+    // Verify password
+    const passHash = crypto.createHash("sha256").update(cleanPass).digest();
     const expectedPassHash = crypto.createHash("sha256").update(ADMIN_PASSWORD).digest();
 
-    return (
-      crypto.timingSafeEqual(userHash, expectedUserHash) &&
-      crypto.timingSafeEqual(passHash, expectedPassHash)
-    );
+    return crypto.timingSafeEqual(passHash, expectedPassHash);
   } catch (err) {
     console.error("[verifyAdminCredentials Error]", err);
     return false;
