@@ -7,7 +7,21 @@ import {
 
 export async function POST(req: NextRequest) {
   try {
-    const { username, password } = await req.json();
+    let body;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ error: "Invalid JSON format" }, { status: 400 });
+    }
+
+    const { username, password } = body || {};
+
+    if (!username || !password) {
+      return NextResponse.json(
+        { error: "Username and password are required" },
+        { status: 400 }
+      );
+    }
 
     if (!verifyAdminCredentials(username, password)) {
       return NextResponse.json(

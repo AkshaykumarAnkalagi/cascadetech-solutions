@@ -12,21 +12,25 @@ const ADMIN_SECRET =
   "cascade-erp-admin-secret-hmac-key-2026-secure";
 
 export function verifyAdminCredentials(user: string, pass: string): boolean {
-  if (!user || !pass) return false;
-  // Timing-safe comparisons
-  const userMatch =
-    crypto.timingSafeEqual(
-      Buffer.from(user.padEnd(64, " ")),
-      Buffer.from(ADMIN_USERNAME.padEnd(64, " "))
-    ) && user.length === ADMIN_USERNAME.length;
+  if (!user || !pass || typeof user !== "string" || typeof pass !== "string") {
+    return false;
+  }
 
-  const passMatch =
-    crypto.timingSafeEqual(
-      Buffer.from(pass.padEnd(64, " ")),
-      Buffer.from(ADMIN_PASSWORD.padEnd(64, " "))
-    ) && pass.length === ADMIN_PASSWORD.length;
+  try {
+    const userHash = crypto.createHash("sha256").update(user).digest();
+    const expectedUserHash = crypto.createHash("sha256").update(ADMIN_USERNAME).digest();
 
-  return userMatch && passMatch;
+    const passHash = crypto.createHash("sha256").update(pass).digest();
+    const expectedPassHash = crypto.createHash("sha256").update(ADMIN_PASSWORD).digest();
+
+    return (
+      crypto.timingSafeEqual(userHash, expectedUserHash) &&
+      crypto.timingSafeEqual(passHash, expectedPassHash)
+    );
+  } catch (err) {
+    console.error("[verifyAdminCredentials Error]", err);
+    return false;
+  }
 }
 
 export function createAdminSessionToken(username: string): string {
