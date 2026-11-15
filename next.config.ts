@@ -51,12 +51,24 @@ const nextConfig: NextConfig = {
           destination: `${educoreUrl}/educore/:path*`,
         },
         {
+          source: "/api/auth/:path*",
+          destination: `${educoreUrl}/educore/api/auth/:path*`,
+        },
+        {
+          source: "/api/telemetry/:path*",
+          destination: `${educoreUrl}/educore/api/telemetry/:path*`,
+        },
+        {
           source: "/nestorahub",
           destination: `${nestoraUrl}/nestorahub`,
         },
         {
           source: "/nestorahub/:path*",
           destination: `${nestoraUrl}/nestorahub/:path*`,
+        },
+        {
+          source: "/assets/:path*",
+          destination: `${nestoraUrl}/assets/:path*`,
         },
       ],
       afterFiles: [],
