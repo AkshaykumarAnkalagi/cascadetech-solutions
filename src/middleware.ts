@@ -1,7 +1,32 @@
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
+import { NextRequest, NextResponse } from "next/server";
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
+
+export default function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Explicitly bypass next-intl for admin, api, educore, nestorahub, studio
+  if (
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/educore") ||
+    pathname.startsWith("/nestorahub") ||
+    pathname.startsWith("/studio")
+  ) {
+    // If accessing /admin dashboard directly without session cookie, redirect to /admin/login
+    if (pathname === "/admin" || pathname === "/admin/") {
+      const session = request.cookies.get("cascade_admin_session")?.value;
+      if (!session) {
+        return NextResponse.redirect(new URL("/admin/login", request.url));
+      }
+    }
+    return NextResponse.next();
+  }
+
+  return intlMiddleware(request);
+}
 
 export const config = {
   // Match all pathnames except for
