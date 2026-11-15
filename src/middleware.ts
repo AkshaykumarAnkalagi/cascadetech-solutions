@@ -6,6 +6,7 @@ export default createMiddleware(routing);
 export const config = {
   // Match all pathnames except for
   // - /api routes
+  // - /admin routes (Cascade Internal Admin & Analytics Dashboard)
   // - /studio routes (Sanity CMS)
   // - /educore routes (Flagship ERP product)
   // - /nestorahub routes (Flagship Real Estate product)
@@ -15,6 +16,6 @@ export const config = {
   matcher: [
     "/",
     "/(en|hi|kn|te|ta|ml|mr|bn|gu)/:path*",
-    "/((?!api|studio|educore|nestorahub|_next|_vercel|.*\\..*).*)",
+    "/((?!api|admin|studio|educore|nestorahub|_next|_vercel|.*\\..*).*)",
   ],
 };

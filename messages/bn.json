@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "বুদ্ধিমান এবং স্কেলেবল ডিজিটাল সমাধান সরবরাহ করা",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "উদ্ভাবনের বছর",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "সম্পন্ন প্রকল্প",
     "stat3Value": "2",
     "stat3Label": "লাইভ পণ্য",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "ভারতের টিয়ার-২ এবং টিয়ার-৩ শহরের জন্য পূর্বাভাসমূলক ইনভেন্টরি লজিস্টিক ফ্রেমওয়ার্ক।"
   }
 }
+

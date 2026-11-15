@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "बुद्धिमान आणि स्केलेबल डिजिटल सोल्यूशन्स प्रदान करणे",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "नवकल्पनेची वर्षे",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "पूर्ण झालेले प्रकल्प",
     "stat3Value": "2",
     "stat3Label": "लाइव्ह उत्पादने",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "भारतातील टियर-2 आणि टियर-3 शहरांसाठी अंदाज इन्व्हेंटरी लॉजिस्टिक्स फ्रेमवर्क."
   }
 }
+

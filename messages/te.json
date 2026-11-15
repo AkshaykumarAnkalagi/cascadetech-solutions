@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "మేధోవంతమైన మరియు స్కేలబుల్ డిజిటల్ పరిష్కారాలను అందించడం",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "ఆవిష్కరణ సంవత్సరాలు",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "పూర్తయిన ప్రాజెక్ట్‌లు",
     "stat3Value": "2",
     "stat3Label": "లైవ్ ఉత్పత్తులు",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "భారతదేశ టైర్-2 మరియు టైర్-3 నగరాల కోసం అంచనా వేసే ఇన్వెంటరీ లాజిస్టిక్స్ ఫ్రేమ్‌వర్క్."
   }
 }
+

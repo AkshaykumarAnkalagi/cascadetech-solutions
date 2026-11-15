@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "બુદ્ધિશાળી અને સ્કેલેબલ ડિજિટલ સોલ્યુશન્સ પ્રદાન કરવા",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "નવીનતાના વર્ષો",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "પૂર્ણ થયેલા પ્રોજેક્ટ્સ",
     "stat3Value": "2",
     "stat3Label": "લાઈવ પ્રોડક્ટ્સ",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "ભારતના ટિયર-2 અને ટિયર-3 શહેરો માટે અનુમાનિત ઇન્વેન્ટરી લોજિસ્ટિક્સ ફ્રેમવર્ક."
   }
 }
+

@@ -65,13 +65,13 @@ export const SITE_INFO = {
 export const STATS: StatItem[] = [
   {
     id: "years",
-    value: "5+",
+    value: "2+",
     label: "Years of Innovation",
     description: "Pioneering intelligent software & modern web architectures",
   },
   {
     id: "projects",
-    value: "45+",
+    value: "10+",
     label: "Projects Delivered",
     description: "Enterprise software, custom web apps, and digital engines",
   },

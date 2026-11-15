@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "ബുദ്ധിപരവും സ്കേലബിളുമായ ഡിജിറ്റൽ സൊല്യൂഷനുകൾ നൽകുന്നു",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "നവീകരണ വർഷങ്ങൾ",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "പൂർത്തിയാക്കിയ പ്രോജക്റ്റുകൾ",
     "stat3Value": "2",
     "stat3Label": "തത്സമയ ഉൽപ്പന്നങ്ങൾ",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "ഇന്ത്യയിലെ ടയർ-2, ടയർ-3 നഗരങ്ങൾക്കായുള്ള ഇൻവെന്ററി ലോജിസ്റ്റിക്സ് ചട്ടക്കൂട്."
   }
 }
+

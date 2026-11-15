@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "Delivering Intelligent and Scalable Digital Solutions",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "Years of Innovation",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "Projects Delivered",
     "stat3Value": "2",
     "stat3Label": "Live Products",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "Predictive inventory logistics framework tailored for Tier-2 and Tier-3 Indian commerce hubs."
   }
 }
+

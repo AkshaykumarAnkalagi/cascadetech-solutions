@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "ಬುದ್ಧಿವಂತ ಮತ್ತು ಅಳೆಯಬಹುದಾದ ಡಿಜಿಟಲ್ ಪರಿಹಾರಗಳನ್ನು ಒದಗಿಸುವುದು",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "ವರ್ಷಗಳ ನಾವೀನ್ಯತೆ",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "ಪೂರ್ಣಗೊಂಡ ಯೋಜನೆಗಳು",
     "stat3Value": "2",
     "stat3Label": "ಲೈವ್ ಉತ್ಪನ್ನಗಳು",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "ಭಾರತದ ಟೈರ್-2 ಮತ್ತು ಟೈರ್-3 ವಾಣಿಜ್ಯ ಕೇಂದ್ರಗಳಿಗಾಗಿ ಮುನ್ಸೂಚಕ ದಾಸ್ತಾನು ಲಾಜಿಸ್ಟಿಕ್ಸ್ ವ್ಯವಸ್ಥೆ."
   }
 }
+

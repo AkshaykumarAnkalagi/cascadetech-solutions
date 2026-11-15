@@ -9,7 +9,7 @@ export const statSchema = defineType({
       name: "value",
       title: "Metric Value",
       type: "string",
-      description: 'Display figure (e.g. "5+", "45+", "2", "99.4%")',
+      description: 'Display figure (e.g. "2+", "10+", "2", "99.4%")',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

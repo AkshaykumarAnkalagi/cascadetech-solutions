@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "बुद्धिमान और स्केलेबल डिजिटल समाधान प्रदान करना",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "नवाचार के वर्ष",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "पूर्ण की गई परियोजनाएं",
     "stat3Value": "2",
     "stat3Label": "लाइव उत्पाद",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "भारत के टियर-2 और टियर-3 वाणिज्य केंद्रों के लिए पूर्वानुमानात्मक इन्वेंट्री लॉजिस्टिक्स ढांचा।"
   }
 }
+

@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "brandName": "CascadeTech Solutions",
     "tagline": "அறிவார்ந்த மற்றும் அளவிடக்கூடிய டிஜிட்டல் தீர்வுகளை வழங்குதல்",
@@ -40,9 +40,9 @@
     "visualCenterSub": "Omni-Tech"
   },
   "stats": {
-    "stat1Value": "5+",
+    "stat1Value": "2+",
     "stat1Label": "ஆண்டுகால புதுமை",
-    "stat2Value": "45+",
+    "stat2Value": "10+",
     "stat2Label": "வழங்கப்பட்ட திட்டங்கள்",
     "stat3Value": "2",
     "stat3Label": "நேரலை தயாரிப்புகள்",
@@ -194,3 +194,4 @@
     "pipeline2Desc": "இந்தியாவின் அடுக்கு-2 மற்றும் அடுக்கு-3 நகரங்களுக்கான முன்கணிப்பு சரக்கு மேலாண்மை கட்டமைப்பு."
   }
 }
+
