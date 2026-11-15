@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { routing } from "@/i18n/routing";
 import { SITE_INFO } from "@/data/siteData";
 import CookieConsent from "@/components/privacy/CookieConsent";
@@ -22,10 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang={routing.defaultLocale} className="dark scroll-smooth">
-      <head>
-        {/* Microsoft Clarity Official Tracking Script */}
-        <script
-          type="text/javascript"
+      <body className="bg-[#05070e] text-[#f8fafc] antialiased selection:bg-cyan-500/20 selection:text-white min-h-screen flex flex-col justify-between">
+        {/* Official Microsoft Clarity Tag */}
+        <Script
+          id="microsoft-clarity"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){
@@ -36,8 +38,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className="bg-[#05070e] text-[#f8fafc] antialiased selection:bg-cyan-500/20 selection:text-white min-h-screen flex flex-col justify-between">
         <ClarityScript />
         <AnalyticsTracker />
         {children}
