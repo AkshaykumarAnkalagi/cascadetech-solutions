@@ -20,7 +20,7 @@ export default function StatsBar() {
     {
       value: t("stat3Value"),
       label: t("stat3Label"),
-      sub: "Startopia & TextYourBoss",
+      sub: "Educore & Nestora Hub",
     },
     {
       value: t("stat4Value"),

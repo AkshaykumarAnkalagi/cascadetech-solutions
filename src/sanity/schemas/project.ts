@@ -9,7 +9,7 @@ export const projectSchema = defineType({
       name: "title",
       title: "Project Title",
       type: "string",
-      description: 'e.g. "Startopia" or "TextYourBoss.ai"',
+      description: 'e.g. "Educore ERP" or "Nestora Hub"',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

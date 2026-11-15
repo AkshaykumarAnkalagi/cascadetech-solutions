@@ -41,38 +41,6 @@ export default function SelectedWork() {
       techStack: ["React", "Vite", "TypeScript", "Tailwind CSS", "shadcn/ui", "Node.js"],
       link: "/nestorahub",
     },
-    {
-      id: "startopia",
-      slug: "startopia",
-      title: t("startopiaTitle"),
-      category: t("startopiaCategory"),
-      tagline: "Startups • Accelerators • Operations",
-      status: t("badgeLive"),
-      description: t("startopiaDesc"),
-      features: [
-        t("startopiaFeat1"),
-        t("startopiaFeat2"),
-        t("startopiaFeat3"),
-      ],
-      techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "Prisma"],
-      link: "https://startopia.in",
-    },
-    {
-      id: "textyourboss",
-      slug: "textyourboss",
-      title: t("textYourBossTitle"),
-      category: t("textYourBossCategory"),
-      tagline: "Corporate AI • Workflow • Communications",
-      status: t("badgeLive"),
-      description: t("textYourBossDesc"),
-      features: [
-        t("textYourBossFeat1"),
-        t("textYourBossFeat2"),
-        t("textYourBossFeat3"),
-      ],
-      techStack: ["Next.js 15", "LangChain", "OpenAI / Claude", "FastAPI", "Vector DB"],
-      link: "https://textyourboss.ai",
-    },
   ];
 
   return (

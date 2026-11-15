@@ -39,7 +39,7 @@ export async function generateMetadata({
       template: `%s | ${SITE_INFO.name}`,
     },
     description:
-      "CascadeTech Solutions delivers intelligent and scalable digital solutions from Vidya-Nagar, Hubballi, Karnataka. Custom website development, web design & UI/UX, enterprise software, AI chatbots, Startopia & TextYourBoss.ai.",
+      "CascadeTech Solutions delivers intelligent and scalable digital solutions from Vidya-Nagar, Hubballi, Karnataka. Custom website development, web design & UI/UX, enterprise software, AI chatbots, Educore ERP & Nestora Hub.",
     keywords: [
       "CascadeTech Solutions",
       "Hubballi software company",
@@ -48,8 +48,8 @@ export async function generateMetadata({
       "UI/UX Design",
       "AI and Chatbot development",
       "Custom Software Development",
-      "Startopia",
-      "TextYourBoss.ai",
+      "Educore ERP",
+      "Nestora Hub",
       "Next.js 15 developer",
       "Scalable digital solutions",
     ],

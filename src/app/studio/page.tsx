@@ -35,7 +35,7 @@ export default function StudioPage() {
     {
       name: "project",
       title: "Projects & Case Studies",
-      description: "Startopia, TextYourBoss.ai, pipeline projects, metrics, and links",
+      description: "Educore ERP, Nestora Hub, pipeline projects, metrics, and links",
       fields: ["title", "slug", "category", "tagline", "metrics", "keyFeatures", "techStack", "status"],
     },
     {
@@ -138,7 +138,7 @@ export default function StudioPage() {
               Live Products Tracked
             </span>
             <div className="text-2xl font-extrabold text-[#00F2FE]">
-              Startopia & TextYourBoss.ai
+              Educore ERP & Nestora Hub
             </div>
             <p className="text-xs text-zinc-400">
               Synchronized across all marketing cards and detail pages

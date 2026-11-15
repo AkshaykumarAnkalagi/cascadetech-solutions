@@ -70,48 +70,6 @@ function WorkContent() {
       techStack: ["React", "Vite", "TypeScript", "Tailwind CSS", "shadcn/ui", "Node.js API", "TanStack Query"],
       link: "/nestorahub",
     },
-    {
-      id: "startopia",
-      title: tWork("startopiaTitle"),
-      category: tWork("startopiaCategory"),
-      status: tWork("badgeLive"),
-      desc: tWork("startopiaDesc"),
-      highlights: [
-        tWork("startopiaFeat1"),
-        tWork("startopiaFeat2"),
-        tWork("startopiaFeat3"),
-        "Modular Multi-Tenant Architecture with Row-Level Security",
-        "Sub-100ms Global API Response Times across South Asia",
-      ],
-      metrics: [
-        { label: "Active Founders", value: "2,400+" },
-        { label: "Pipeline Value Tracked", value: "$18M+" },
-        { label: "Platform Uptime", value: "99.98%" },
-      ],
-      techStack: ["Next.js 15 App Router", "TypeScript", "Tailwind CSS", "Supabase", "Prisma ORM", "Vercel Edge"],
-      link: "https://startopia.in",
-    },
-    {
-      id: "textyourboss",
-      title: tWork("textYourBossTitle"),
-      category: tWork("textYourBossCategory"),
-      status: tWork("badgeLive"),
-      desc: tWork("textYourBossDesc"),
-      highlights: [
-        tWork("textYourBossFeat1"),
-        tWork("textYourBossFeat2"),
-        tWork("textYourBossFeat3"),
-        "Streaming LLM Completion with Custom Guardrails",
-        "Enterprise Air-Gapped Encryption Option",
-      ],
-      metrics: [
-        { label: "Messages Drafted", value: "140K+" },
-        { label: "Time Saved / Brief", value: "82%" },
-        { label: "Sentiment Accuracy", value: "99.2%" },
-      ],
-      techStack: ["Next.js 15", "LangChain", "OpenAI / Claude", "FastAPI Python", "Pinecone Vector DB", "PostgreSQL"],
-      link: "https://textyourboss.ai",
-    },
   ];
 
   const pipeline = [
