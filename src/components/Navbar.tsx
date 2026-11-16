@@ -39,8 +39,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#05070E]/95 backdrop-blur-xl border-b border-cyan-500/15 py-3 shadow-2xl shadow-black/80"
-          : "bg-gradient-to-b from-[#05070E]/95 via-[#05070E]/70 to-transparent backdrop-blur-md py-4 sm:py-5 border-b border-white/[0.04]"
+          ? "bg-[#05070E]/95 backdrop-blur-xl border-b border-cyan-500/15 py-2.5 sm:py-3 shadow-2xl shadow-black/80"
+          : "bg-gradient-to-b from-[#05070E]/95 via-[#05070E]/70 to-transparent backdrop-blur-md py-3 sm:py-4 border-b border-white/[0.04]"
       }`}
     >
       {/* Ambient lighting shade across the navbar */}
@@ -57,23 +57,23 @@ export default function Navbar() {
           >
             <div className="relative flex items-center justify-center">
               {/* Soft diffused background shade behind logo (no hard box border) */}
-              <div className="absolute w-16 h-16 rounded-full bg-gradient-to-r from-cyan-400/25 via-blue-500/15 to-transparent blur-xl pointer-events-none -z-10 group-hover:scale-125 group-hover:from-cyan-400/40 transition-all duration-300" />
-              <div className="absolute w-10 h-10 rounded-full bg-white/10 blur-md pointer-events-none -z-10" />
+              <div className="absolute w-36 sm:w-44 h-24 sm:h-28 rounded-full bg-gradient-to-r from-cyan-400/35 via-blue-500/20 to-transparent blur-2xl pointer-events-none -z-10 group-hover:scale-125 group-hover:from-cyan-400/50 transition-all duration-300" />
+              <div className="absolute w-24 sm:w-28 h-16 sm:h-20 rounded-full bg-white/10 blur-xl pointer-events-none -z-10" />
 
               <Image
                 src="/cascade-logo.png"
                 alt="CascadeTech Solutions Logo"
-                width={52}
-                height={52}
+                width={104}
+                height={84}
                 priority
-                className="object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-105"
+                className="h-16 sm:h-20 lg:h-[84px] w-auto object-contain drop-shadow-[0_6px_20px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:scale-105"
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-white font-bold tracking-tight text-base sm:text-lg group-hover:text-[#00F2FE] transition-colors leading-tight">
+              <span className="text-white font-bold tracking-tight text-xl sm:text-2xl group-hover:text-[#00F2FE] transition-colors leading-tight">
                 CascadeTech
               </span>
-              <span className="text-[10px] tracking-widest uppercase font-semibold text-zinc-400">
+              <span className="text-xs sm:text-sm tracking-widest uppercase font-semibold text-zinc-400">
                 Solutions
               </span>
             </div>

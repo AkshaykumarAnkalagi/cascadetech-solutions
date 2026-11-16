@@ -1,27 +1,17 @@
 async function test() {
-  const ua = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
-  const urls = [
-    'https://www.cascade-erp.in',
-    'https://www.cascade-erp.in/',
-    'https://www.cascade-erp.in/en',
-    'https://www.cascade-erp.in/en/'
-  ];
+  const res = await fetch('https://www.cascade-erp.in/en');
+  const html = await res.text();
+  console.log('--- LIVE HTML INSPECTION ---');
+  console.log('Has ambient shade (from-cyan-400/25):', html.includes('from-cyan-400/25'));
+  console.log('Has old box container:', html.includes('rounded-xl bg-white shadow-md'));
+  console.log('Has width="52":', html.includes('width="52"'));
+  console.log('Has og:image (jpg):', html.includes('og-image.jpg'));
 
-  for (const url of urls) {
-    console.log('\n--- Checking URL:', url, '---');
-    const res = await fetch(url, {
-      headers: { 'User-Agent': ua },
-      redirect: 'follow'
-    });
-    console.log('Final URL:', res.url, 'Status:', res.status);
-    const html = await res.text();
-    const ogImg = html.match(/property="og:image"\s+content="([^"]+)"/i) || html.match(/content="([^"]+)"\s+property="og:image"/i);
-    const ogTitle = html.match(/property="og:title"\s+content="([^"]+)"/i) || html.match(/content="([^"]+)"\s+property="og:title"/i);
-    const ogDesc = html.match(/property="og:description"\s+content="([^"]+)"/i) || html.match(/content="([^"]+)"\s+property="og:description"/i);
-    console.log('og:image:', ogImg ? ogImg[1] : 'NOT FOUND');
-    console.log('og:title:', ogTitle ? ogTitle[1] : 'NOT FOUND');
-    console.log('og:description:', ogDesc ? ogDesc[1] : 'NOT FOUND');
+  // Also check the navbar header snippet
+  const navMatch = html.match(/<header[^>]*>([\s\S]*?)<\/header>/i);
+  if (navMatch) {
+    console.log('Navbar snippet length:', navMatch[0].length);
+    console.log('Navbar starts with:', navMatch[0].slice(0, 300));
   }
 }
-
 test();

@@ -22,20 +22,20 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center gap-3.5 group">
               <div className="relative flex items-center justify-center">
                 {/* Soft diffused background shade behind logo */}
-                <div className="absolute w-16 h-16 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-500/10 blur-xl pointer-events-none -z-10 group-hover:scale-125 transition-all duration-300" />
+                <div className="absolute w-32 sm:w-36 h-20 sm:h-24 rounded-full bg-gradient-to-r from-cyan-400/25 to-blue-500/15 blur-xl pointer-events-none -z-10 group-hover:scale-125 transition-all duration-300" />
                 <Image
                   src="/cascade-logo.png"
                   alt="CascadeTech Solutions Logo"
-                  width={52}
-                  height={52}
-                  className="object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-105"
+                  width={96}
+                  height={78}
+                  className="h-16 sm:h-20 w-auto object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-white font-bold tracking-tight text-lg">
+                <span className="text-white font-bold tracking-tight text-xl sm:text-2xl group-hover:text-[#00F2FE] transition-colors leading-tight">
                   CascadeTech
                 </span>
-                <span className="text-[10px] tracking-widest uppercase font-semibold text-zinc-400 -mt-1">
+                <span className="text-xs sm:text-sm tracking-widest uppercase font-semibold text-zinc-400">
                   Solutions
                 </span>
               </div>

@@ -144,20 +144,20 @@ export default function AdminDashboardPage() {
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3.5 group">
               <div className="relative flex items-center justify-center">
-                <div className="absolute w-12 h-12 rounded-full bg-cyan-400/20 blur-lg pointer-events-none -z-10 group-hover:scale-110 transition-all" />
+                <div className="absolute w-20 h-16 rounded-full bg-cyan-400/25 blur-lg pointer-events-none -z-10 group-hover:scale-125 transition-all" />
                 <Image
                   src="/cascade-logo.png"
                   alt="Cascade Logo"
-                  width={46}
-                  height={46}
-                  className="object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition group-hover:scale-105"
+                  width={68}
+                  height={55}
+                  className="h-12 sm:h-14 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition group-hover:scale-105"
                 />
               </div>
               <div>
-                <span className="text-sm font-bold text-white group-hover:text-cyan-400 transition">
+                <span className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-400 transition leading-tight">
                   CascadeTech Solutions
                 </span>
-                <span className="block text-[10px] text-cyan-400 font-mono tracking-wider">
+                <span className="block text-[10px] sm:text-xs text-cyan-400 font-mono tracking-wider">
                   ADMIN CONSOLE
                 </span>
               </div>
