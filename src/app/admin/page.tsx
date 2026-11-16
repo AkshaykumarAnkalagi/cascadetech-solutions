@@ -142,14 +142,15 @@ export default function AdminDashboardPage() {
       <header className="sticky top-0 z-40 border-b border-cyan-500/20 bg-[#070b16]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6">
           <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-11 w-11 rounded-xl bg-white shadow-sm p-1 flex items-center justify-center transition group-hover:scale-105">
+            <Link href="/" className="flex items-center gap-3.5 group">
+              <div className="relative flex items-center justify-center">
+                <div className="absolute w-12 h-12 rounded-full bg-cyan-400/20 blur-lg pointer-events-none -z-10 group-hover:scale-110 transition-all" />
                 <Image
                   src="/cascade-logo.png"
                   alt="Cascade Logo"
-                  width={36}
-                  height={36}
-                  className="object-contain"
+                  width={46}
+                  height={46}
+                  className="object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition group-hover:scale-105"
                 />
               </div>
               <div>

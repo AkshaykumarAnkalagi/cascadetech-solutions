@@ -19,14 +19,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/[0.07]">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="inline-flex items-center gap-3 group">
-              <div className="relative w-12 h-12 rounded-xl bg-white shadow-md shadow-white/10 p-1.5 flex items-center justify-center transition-transform group-hover:scale-105">
+            <Link href="/" className="inline-flex items-center gap-3.5 group">
+              <div className="relative flex items-center justify-center">
+                {/* Soft diffused background shade behind logo */}
+                <div className="absolute w-16 h-16 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-500/10 blur-xl pointer-events-none -z-10 group-hover:scale-125 transition-all duration-300" />
                 <Image
                   src="/cascade-logo.png"
                   alt="CascadeTech Solutions Logo"
-                  width={40}
-                  height={40}
-                  className="object-contain"
+                  width={52}
+                  height={52}
+                  className="object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <div className="flex flex-col">
