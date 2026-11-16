@@ -50,17 +50,15 @@ export default function Navbar() {
             href="/"
             className="flex items-center gap-3 group transition-transform duration-200 shrink-0"
           >
-            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-cyan-400/30 via-cyan-500/20 to-blue-600/30 p-[1.5px] shadow-md shadow-cyan-500/20 group-hover:shadow-cyan-400/40 group-hover:scale-105 transition-all duration-300">
-              <div className="w-full h-full bg-[#070d1a]/90 backdrop-blur-md rounded-[10px] flex items-center justify-center overflow-hidden p-1 border border-cyan-400/20">
-                <Image
-                  src="/cascade-logo.png"
-                  alt="CascadeTech Solutions Logo"
-                  width={42}
-                  height={42}
-                  priority
-                  className="object-contain drop-shadow-[0_0_8px_rgba(0,242,254,0.4)] transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
+            <div className="relative w-12 h-12 rounded-xl bg-white shadow-md shadow-cyan-500/15 p-1.5 flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-cyan-400/30">
+              <Image
+                src="/cascade-logo.png"
+                alt="CascadeTech Solutions Logo"
+                width={40}
+                height={40}
+                priority
+                className="object-contain"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-white font-bold tracking-tight text-base sm:text-lg group-hover:text-[#00F2FE] transition-colors leading-tight">

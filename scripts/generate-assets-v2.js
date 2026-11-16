@@ -3,7 +3,7 @@ const path = require('path');
 const sharp = require('sharp');
 
 async function buildAllBrandAssets() {
-  console.log('--- Processing Official Cascade Brand Assets (Dark Theme Optimized) ---');
+  console.log('--- Processing Authentic Brand Assets (Original Colors #140605 & #fefaf7) ---');
 
   const sourceFile = path.join(__dirname, '..', 'assets', 'Cascade_Logo-Photoroom.png');
   if (!fs.existsSync(sourceFile)) {
@@ -18,55 +18,38 @@ async function buildAllBrandAssets() {
   const trimmedEmblem = await sharp(emblemRaw).trim().toBuffer({ resolveWithObject: true });
   console.log(`Trimmed emblem: ${trimmedEmblem.info.width}x${trimmedEmblem.info.height}`);
 
-  // 2. Convert ink pixels:
-  // Original black ink (luma < 120) -> Pure White to Electric Cyan gradient (#ffffff -> #00F2FE)
-  // Original white paper (luma >= 120) -> Transparent
+  // 2. Preserve 100% authentic original pixel colors:
+  // The emblem from PhotoRoom has:
+  // - Dark strokes: #140605 (deep charcoal/black)
+  // - Inner triangle fill: #fefaf7 (warm white)
+  // - Outer background: Transparent (a < 30)
+  // We keep the original pixel colors EXACTLY as designed!
   const { data, info } = await sharp(trimmedEmblem.data).raw().toBuffer({ resolveWithObject: true });
   const outBuf = Buffer.alloc(data.length);
 
-  for (let y = 0; y < info.height; y++) {
-    const t = y / info.height; // 0 at top, 1 at bottom
-    // Top is pure crisp white (#ffffff), bottom is electric cyan (#00F2FE = 0, 242, 254)
-    const cr = Math.round(255 * (1 - t * 0.45)); // 255 -> 140
-    const cg = Math.round(255 * (1 - t * 0.05)); // 255 -> 242
-    const cb = 255; // 255
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    const a = data[i + 3];
 
-    for (let x = 0; x < info.width; x++) {
-      const idx = (y * info.width + x) * 4;
-      const r = data[idx];
-      const g = data[idx + 1];
-      const b = data[idx + 2];
-      const a = data[idx + 3];
-
-      if (a < 30) {
-        outBuf[idx] = 0;
-        outBuf[idx + 1] = 0;
-        outBuf[idx + 2] = 0;
-        outBuf[idx + 3] = 0;
-        continue;
-      }
-
-      const luma = 0.299 * r + 0.587 * g + 0.114 * b;
-      if (luma < 130) {
-        // Logo ink stroke
-        // Smooth anti-aliasing edge falloff:
-        const edgeAlpha = Math.min(255, Math.max(0, Math.round(a * (1 - luma / 130) * 1.15)));
-        outBuf[idx] = cr;
-        outBuf[idx + 1] = cg;
-        outBuf[idx + 2] = cb;
-        outBuf[idx + 3] = edgeAlpha;
-      } else {
-        // Cutout paper
-        outBuf[idx] = 0;
-        outBuf[idx + 1] = 0;
-        outBuf[idx + 2] = 0;
-        outBuf[idx + 3] = 0;
-      }
+    if (a < 25) {
+      // Outer transparent area
+      outBuf[i] = 0;
+      outBuf[i + 1] = 0;
+      outBuf[i + 2] = 0;
+      outBuf[i + 3] = 0;
+    } else {
+      // Keep authentic brand colors exactly
+      outBuf[i] = r;
+      outBuf[i + 1] = g;
+      outBuf[i + 2] = b;
+      outBuf[i + 3] = a;
     }
   }
 
-  // 3. Create high-res 512x512 square centered emblem with 8% padding (fills 84% of box)
-  const emblemProcessed = await sharp(outBuf, { raw: { width: info.width, height: info.height, channels: 4 } })
+  // 3. Create high-res 512x512 square centered emblem with 6% balanced padding (fills 88% of container)
+  const emblemOriginal = await sharp(outBuf, { raw: { width: info.width, height: info.height, channels: 4 } })
     .png()
     .toBuffer();
 
@@ -80,64 +63,77 @@ async function buildAllBrandAssets() {
   })
     .composite([
       {
-        input: await sharp(emblemProcessed).resize(450, 450, { fit: 'inside' }).toBuffer(),
+        input: await sharp(emblemOriginal).resize(460, 460, { fit: 'inside' }).toBuffer(),
         gravity: 'center',
       },
     ])
     .png()
     .toBuffer();
 
-  // Save official logo files
   const publicDir = path.join(__dirname, '..', 'public');
   const appDir = path.join(__dirname, '..', 'src', 'app');
 
   fs.writeFileSync(path.join(publicDir, 'cascade-logo.png'), square512);
   fs.writeFileSync(path.join(publicDir, 'cascade-emblem.png'), square512);
-  console.log('Saved public/cascade-logo.png (512x512 high-res white/cyan emblem on transparent)');
+  console.log('Saved public/cascade-logo.png (512x512 authentic logo on transparent)');
 
-  // 4. Generate multi-resolution Favicon
-  // 32x32 and 48x48
-  const fav32 = await sharp(square512).resize(32, 32).png().toBuffer();
-  const fav48 = await sharp(square512).resize(48, 48).png().toBuffer();
-  const fav192 = await sharp(square512).resize(192, 192).png().toBuffer();
+  // 4. Generate Favicons:
+  // For browser tabs (which can be dark or light mode):
+  // Put the original emblem on a clean, rounded white squircle badge so it pops in all browser tabs!
+  const makeFaviconCanvas = async (size) => {
+    const padding = Math.round(size * 0.12);
+    const innerSize = size - padding * 2;
+    const rx = Math.round(size * 0.22);
+
+    const bgSvg = `
+      <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+        <rect width="${size}" height="${size}" rx="${rx}" fill="#ffffff"/>
+      </svg>
+    `;
+    const bg = await sharp(Buffer.from(bgSvg)).png().toBuffer();
+    const emblemResized = await sharp(square512).resize(innerSize, innerSize, { fit: 'inside' }).toBuffer();
+
+    return await sharp(bg)
+      .composite([{ input: emblemResized, gravity: 'center' }])
+      .png()
+      .toBuffer();
+  };
+
+  const fav32 = await makeFaviconCanvas(32);
+  const fav48 = await makeFaviconCanvas(48);
+  const fav192 = await makeFaviconCanvas(192);
 
   fs.writeFileSync(path.join(publicDir, 'favicon.ico'), fav32);
   fs.writeFileSync(path.join(appDir, 'favicon.ico'), fav32);
   fs.writeFileSync(path.join(publicDir, 'icon.png'), fav32);
   fs.writeFileSync(path.join(appDir, 'icon.png'), fav32);
-  console.log('Saved favicons (32x32 & 48x48)');
+  console.log('Saved favicons with crisp white squircle backing (32x32 & 48x48)');
 
-  // 5. Apple Touch Icon (180x180 on dark squircle canvas)
-  const appleTouchSvg = `
-    <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  // 5. Apple Touch Icon (180x180 on crisp white rounded squircle canvas)
+  const appleTouch = await makeFaviconCanvas(180);
+  fs.writeFileSync(path.join(publicDir, 'apple-touch-icon.png'), appleTouch);
+  fs.writeFileSync(path.join(appDir, 'apple-icon.png'), appleTouch);
+  console.log('Saved Apple Touch Icons (180x180)');
+
+  // 6. Universal 1200x630 Social Share Preview Banner (OpenGraph / WhatsApp / Twitter)
+  // Put the authentic logo inside a prominent white rounded card on the left side of the banner!
+  const whiteCardSvg = `
+    <svg width="260" height="260" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <radialGradient id="bgGlow" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#0a1835" />
-          <stop offset="100%" stop-color="#03050a" />
-        </radialGradient>
-        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.2"/>
-        </linearGradient>
+        <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#00F2FE" flood-opacity="0.25"/>
+        </filter>
       </defs>
-      <rect width="180" height="180" rx="40" fill="url(#bgGlow)"/>
-      <rect x="1.5" y="1.5" width="177" height="177" rx="38.5" fill="none" stroke="url(#ringGrad)" stroke-width="2"/>
+      <rect width="260" height="260" rx="36" fill="#ffffff" filter="url(#cardShadow)"/>
     </svg>
   `;
-  const appleTouchBg = await sharp(Buffer.from(appleTouchSvg)).png().toBuffer();
-  const emblem130 = await sharp(square512).resize(130, 130).toBuffer();
-
-  const appleTouchFinal = await sharp(appleTouchBg)
-    .composite([{ input: emblem130, gravity: 'center' }])
+  const whiteCardBg = await sharp(Buffer.from(whiteCardSvg)).png().toBuffer();
+  const emblemInCard = await sharp(square512).resize(220, 220, { fit: 'inside' }).toBuffer();
+  const logoCard = await sharp(whiteCardBg)
+    .composite([{ input: emblemInCard, gravity: 'center' }])
     .png()
     .toBuffer();
 
-  fs.writeFileSync(path.join(publicDir, 'apple-touch-icon.png'), appleTouchFinal);
-  fs.writeFileSync(path.join(appDir, 'apple-icon.png'), appleTouchFinal);
-  console.log('Saved Apple Touch Icons (180x180)');
-
-  // 6. 1200x630 Social Share Preview Banner (OpenGraph / Twitter)
-  const emblem240 = await sharp(square512).resize(240, 240).toBuffer();
   const ogSvg = `
     <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -173,45 +169,45 @@ async function buildAllBrandAssets() {
       </g>
 
       <!-- Badge -->
-      <g transform="translate(420, 140)">
+      <g transform="translate(430, 140)">
         <rect width="360" height="38" rx="19" fill="#022a3a" stroke="#00F2FE" stroke-opacity="0.4" stroke-width="1"/>
         <circle cx="22" cy="19" r="4.5" fill="#00F2FE"/>
-        <text x="36" y="24" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#00F2FE" letter-spacing="1.5">NEXT-GEN TECHNOLOGY PARTNER</text>
+        <text x="36" y="24" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#00F2FE" letter-spacing="1.5">NEXT-GEN TECHNOLOGY PARTNER</text>
       </g>
 
       <!-- Title -->
-      <text x="420" y="245" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">CascadeTech <tspan fill="url(#textGrad)">Solutions</tspan></text>
+      <text x="430" y="245" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">CascadeTech <tspan fill="url(#textGrad)">Solutions</tspan></text>
 
       <!-- Tagline -->
-      <text x="420" y="300" font-family="system-ui, sans-serif" font-size="22" font-weight="400" fill="#94a3b8">
+      <text x="430" y="300" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="400" fill="#94a3b8">
         Delivering Intelligent and Scalable Digital Solutions
       </text>
 
       <!-- Descriptions -->
-      <text x="420" y="340" font-family="system-ui, sans-serif" font-size="16" font-weight="400" fill="#64748b">
+      <text x="430" y="340" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="400" fill="#64748b">
         High-Performance Web Platforms • Enterprise Software • Applied AI Systems
       </text>
 
       <!-- Product Badges -->
-      <g transform="translate(420, 390)">
+      <g transform="translate(430, 390)">
         <rect width="210" height="44" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-        <text x="18" y="27" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#ffffff">Educore ERP</text>
+        <text x="18" y="27" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#ffffff">Educore ERP</text>
         <rect x="135" y="11" width="60" height="22" rx="6" fill="#0284c7" fill-opacity="0.25"/>
-        <text x="144" y="26" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">LIVE</text>
+        <text x="144" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">LIVE</text>
       </g>
 
-      <g transform="translate(645, 390)">
+      <g transform="translate(655, 390)">
         <rect width="210" height="44" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-        <text x="18" y="27" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#ffffff">Nestora Hub</text>
+        <text x="18" y="27" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#ffffff">Nestora Hub</text>
         <rect x="135" y="11" width="60" height="22" rx="6" fill="#0284c7" fill-opacity="0.25"/>
-        <text x="144" y="26" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">LIVE</text>
+        <text x="144" y="26" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">LIVE</text>
       </g>
 
       <!-- Footer Domain -->
-      <text x="420" y="490" font-family="system-ui, sans-serif" font-size="17" font-weight="600" fill="#00F2FE">
+      <text x="430" y="490" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="600" fill="#00F2FE">
         https://www.cascade-erp.in
       </text>
-      <text x="730" y="490" font-family="system-ui, sans-serif" font-size="14" font-weight="400" fill="#475569">
+      <text x="740" y="490" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="400" fill="#475569">
         • Vidya-Nagar, Hubballi, Karnataka
       </text>
     </svg>
@@ -220,17 +216,24 @@ async function buildAllBrandAssets() {
   const ogCard = await sharp(Buffer.from(ogSvg))
     .composite([
       {
-        input: emblem240,
-        left: 120,
-        top: 170,
+        input: logoCard,
+        left: 110,
+        top: 160,
       },
     ])
     .png()
     .toBuffer();
 
+  // Save both PNG and highly-optimized JPEG (optimal for WhatsApp Web / Android / iOS)
   fs.writeFileSync(path.join(publicDir, 'og-image.png'), ogCard);
   fs.writeFileSync(path.join(appDir, 'opengraph-image.png'), ogCard);
-  console.log('Saved 1200x630 Social Preview Card');
+
+  const ogJpeg = await sharp(ogCard)
+    .jpeg({ quality: 90, mozjpeg: true })
+    .toBuffer();
+
+  fs.writeFileSync(path.join(publicDir, 'og-image.jpg'), ogJpeg);
+  console.log(`Saved 1200x630 Social Preview Cards: PNG (${ogCard.length} bytes), JPEG (${ogJpeg.length} bytes)`);
 }
 
 buildAllBrandAssets().catch((err) => {

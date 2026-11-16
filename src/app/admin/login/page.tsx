@@ -50,17 +50,15 @@ export default function AdminLoginPage() {
       <div className="relative w-full max-w-md">
         {/* Top Header Card */}
         <div className="mb-6 text-center flex flex-col items-center">
-          <div className="relative mb-3 h-20 w-20 rounded-2xl bg-gradient-to-tr from-cyan-400/30 via-cyan-500/20 to-blue-600/30 p-[2px] shadow-xl shadow-cyan-500/25">
-            <div className="w-full h-full bg-[#070d1a]/95 rounded-[14px] flex items-center justify-center p-2 overflow-hidden border border-cyan-400/20">
-              <Image
-                src="/cascade-logo.png"
-                alt="CascadeTech Solutions Logo"
-                width={64}
-                height={64}
-                priority
-                className="object-contain drop-shadow-[0_0_12px_rgba(0,242,254,0.45)]"
-              />
-            </div>
+          <div className="relative mb-3 h-20 w-20 rounded-2xl bg-white shadow-xl shadow-cyan-500/25 p-2 flex items-center justify-center">
+            <Image
+              src="/cascade-logo.png"
+              alt="CascadeTech Solutions Logo"
+              width={64}
+              height={64}
+              priority
+              className="object-contain"
+            />
           </div>
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3.5 py-1 text-xs font-medium text-cyan-300">
             <ShieldCheck className="h-4 w-4" />

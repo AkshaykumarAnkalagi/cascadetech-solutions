@@ -86,9 +86,19 @@ export async function generateMetadata({
         "Delivering Intelligent and Scalable Digital Solutions from Vidya-Nagar, Hubballi, Karnataka.",
       images: [
         {
-          url: "https://www.cascade-erp.in/og-image.png",
+          url: "https://www.cascade-erp.in/og-image.jpg",
+          secureUrl: "https://www.cascade-erp.in/og-image.jpg",
           width: 1200,
           height: 630,
+          type: "image/jpeg",
+          alt: "CascadeTech Solutions — Delivering Intelligent & Scalable Digital Solutions",
+        },
+        {
+          url: "https://www.cascade-erp.in/og-image.png",
+          secureUrl: "https://www.cascade-erp.in/og-image.png",
+          width: 1200,
+          height: 630,
+          type: "image/png",
           alt: "CascadeTech Solutions — Delivering Intelligent & Scalable Digital Solutions",
         },
       ],
@@ -98,7 +108,7 @@ export async function generateMetadata({
       title: title,
       description:
         "Delivering Intelligent and Scalable Digital Solutions from Vidya-Nagar, Hubballi.",
-      images: ["https://www.cascade-erp.in/og-image.png"],
+      images: ["https://www.cascade-erp.in/og-image.jpg"],
     },
     robots: {
       index: true,

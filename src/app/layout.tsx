@@ -27,22 +27,32 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_INFO.name,
     title: `${SITE_INFO.name} | ${SITE_INFO.tagline}`,
-    description: SITE_INFO.tagline,
+    description: SITE_INFO.shortBio,
     url: "https://www.cascade-erp.in",
     images: [
       {
-        url: "https://www.cascade-erp.in/og-image.png",
+        url: "https://www.cascade-erp.in/og-image.jpg",
+        secureUrl: "https://www.cascade-erp.in/og-image.jpg",
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "CascadeTech Solutions — Delivering Intelligent & Scalable Digital Solutions",
+      },
+      {
+        url: "https://www.cascade-erp.in/og-image.png",
+        secureUrl: "https://www.cascade-erp.in/og-image.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "CascadeTech Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_INFO.name} | ${SITE_INFO.tagline}`,
-    description: SITE_INFO.tagline,
-    images: ["https://www.cascade-erp.in/og-image.png"],
+    description: SITE_INFO.shortBio,
+    images: ["https://www.cascade-erp.in/og-image.jpg"],
   },
 };
 
