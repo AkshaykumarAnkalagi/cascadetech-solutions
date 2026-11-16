@@ -33,30 +33,34 @@ export default function LanguageSwitcher() {
   const currentMeta = LOCALE_METADATA[currentLocale] || LOCALE_METADATA.en;
 
   return (
-    <div className="relative inline-block text-left" ref={dropdownRef}>
-      {/* Trigger Button */}
+    <div className="relative inline-block text-left shrink-0" ref={dropdownRef}>
+      {/* Trigger Button: Ultra-compact on mobile, full on tablet/desktop */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         type="button"
-        className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-cyan-500/25 hover:border-cyan-400/50 text-xs sm:text-sm font-medium text-zinc-200 hover:text-white transition-all duration-200 shadow-[0_0_15px_rgba(0,212,255,0.06)]"
+        className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-cyan-500/25 hover:border-cyan-400/50 text-xs sm:text-sm font-medium text-zinc-200 hover:text-white transition-all duration-200 shadow-[0_0_12px_rgba(0,212,255,0.06)] shrink-0 active:scale-95"
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-label="Select language"
       >
-        <Globe className="w-3.5 h-3.5 text-[#00d4ff]" />
-        <span className="font-semibold text-white tracking-wide">
+        <Globe className="w-3.5 h-3.5 text-[#00d4ff] shrink-0" />
+        {/* Full native name on sm+ (e.g. English, ಕನ್ನಡ), compact uppercase code on mobile (<sm) */}
+        <span className="hidden sm:inline font-semibold text-white tracking-wide">
           {currentMeta.nativeName}
         </span>
+        <span className="sm:hidden font-bold text-white text-[11px] tracking-wider uppercase">
+          {currentLocale}
+        </span>
         <ChevronDown
-          className={`w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 ${
+          className={`w-3 h-3 sm:w-3.5 sm:h-3.5 text-zinc-400 shrink-0 transition-transform duration-200 ${
             isOpen ? "rotate-180 text-[#00d4ff]" : ""
           }`}
         />
       </button>
 
-      {/* Dropdown Menu */}
+      {/* Dropdown Menu - Aligned to right, responsive max width to never exceed viewport */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-56 sm:w-60 rounded-2xl bg-[#070e1b]/95 backdrop-blur-xl border border-cyan-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(0,212,255,0.15)] py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+        <div className="absolute right-0 mt-2 w-64 max-w-[calc(100vw-24px)] rounded-2xl bg-[#070e1b]/95 backdrop-blur-xl border border-cyan-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(0,212,255,0.15)] py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
           <div className="px-3 py-1.5 border-b border-white/[0.06] mb-1">
             <p className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold">
               Select Language / ಭಾಷೆ / भाषा

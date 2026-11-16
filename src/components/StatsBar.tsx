@@ -11,10 +11,10 @@ export default function StatsBar({ cmsStats }: { cmsStats?: StatItem[] }) {
 
   const statItems = (isEn && cmsStats && cmsStats.length > 0)
     ? cmsStats.map((s) => ({
-        value: s.value,
-        label: s.label,
-        sub: (s as any).sub || s.description || "",
-      }))
+      value: s.value,
+      label: s.label,
+      sub: (s as any).sub || s.description || "",
+    }))
     : [
         {
           value: t("stat1Value"),

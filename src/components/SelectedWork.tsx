@@ -117,7 +117,7 @@ export default function SelectedWork({ cmsProjects }: { cmsProjects?: ProjectIte
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className="group relative rounded-3xl bg-[#090e17]/80 border border-white/[0.08] hover:border-cyan-400/40 p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,242,254,0.08)] backdrop-blur-xl"
+              className="group relative rounded-3xl bg-[#090e17]/80 border border-white/[0.08] hover:border-cyan-400/40 p-6 sm:p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,242,254,0.08)] backdrop-blur-xl"
             >
               {/* Top Bar inside Card */}
               <div>

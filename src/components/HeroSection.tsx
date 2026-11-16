@@ -17,7 +17,7 @@ export default function HeroSection({ cmsHero }: HeroSectionProps) {
   const isEn = locale === "en";
 
   return (
-    <section className="relative min-h-[92vh] pt-32 pb-20 flex items-center justify-center overflow-hidden bg-grid-pattern">
+    <section className="relative min-h-[92vh] pt-28 sm:pt-32 pb-16 sm:pb-20 flex items-center justify-center overflow-hidden bg-grid-pattern">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[420px] bg-[#00d4ff]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/3 right-10 w-[350px] h-[350px] bg-cyan-600/10 rounded-full blur-[130px] pointer-events-none" />
@@ -86,34 +86,34 @@ export default function HeroSection({ cmsHero }: HeroSectionProps) {
             </div>
 
             {/* Small Trust Indicators */}
-            <div className="pt-6 border-t border-white/[0.08] grid grid-cols-3 gap-3 sm:gap-6 max-w-lg">
-              <div className="flex items-center gap-2 sm:gap-2.5">
+            <div className="pt-6 border-t border-white/[0.08] grid grid-cols-3 gap-2 sm:gap-6 max-w-lg">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center text-[#00d4ff] shrink-0">
                   <Bot className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-white">{t("badge1Title")}</p>
-                  <p className="text-[10px] text-zinc-400">{t("badge1Sub")}</p>
+                  <p className="text-xs sm:text-sm font-semibold text-white leading-tight">{t("badge1Title")}</p>
+                  <p className="text-[10px] text-zinc-400 mt-0.5">{t("badge1Sub")}</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 sm:gap-2.5">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-400 shrink-0">
                   <Shield className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-white">{t("badge2Title")}</p>
-                  <p className="text-[10px] text-zinc-400">{t("badge2Sub")}</p>
+                  <p className="text-xs sm:text-sm font-semibold text-white leading-tight">{t("badge2Title")}</p>
+                  <p className="text-[10px] text-zinc-400 mt-0.5">{t("badge2Sub")}</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 sm:gap-2.5">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shrink-0">
                   <Headphones className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-white">{t("badge3Title")}</p>
-                  <p className="text-[10px] text-zinc-400">{t("badge3Sub")}</p>
+                  <p className="text-xs sm:text-sm font-semibold text-white leading-tight">{t("badge3Title")}</p>
+                  <p className="text-[10px] text-zinc-400 mt-0.5">{t("badge3Sub")}</p>
                 </div>
               </div>
             </div>
