@@ -8,12 +8,42 @@ import AnalyticsTracker from "@/components/analytics/AnalyticsTracker";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cascadetech.in"),
+  metadataBase: new URL("https://www.cascade-erp.in"),
   title: {
     default: `${SITE_INFO.name} | ${SITE_INFO.tagline}`,
     template: `%s | ${SITE_INFO.name}`,
   },
   description: SITE_INFO.tagline,
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  openGraph: {
+    type: "website",
+    siteName: SITE_INFO.name,
+    title: `${SITE_INFO.name} | ${SITE_INFO.tagline}`,
+    description: SITE_INFO.tagline,
+    url: "https://www.cascade-erp.in",
+    images: [
+      {
+        url: "https://www.cascade-erp.in/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CascadeTech Solutions — Delivering Intelligent & Scalable Digital Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_INFO.name} | ${SITE_INFO.tagline}`,
+    description: SITE_INFO.tagline,
+    images: ["https://www.cascade-erp.in/og-image.png"],
+  },
 };
 
 export default function RootLayout({

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ShieldCheck, Lock, User, ArrowRight, Eye, EyeOff, AlertCircle } from "lucide-react";
 
 export default function AdminLoginPage() {
@@ -48,7 +49,19 @@ export default function AdminLoginPage() {
 
       <div className="relative w-full max-w-md">
         {/* Top Header Card */}
-        <div className="mb-6 text-center">
+        <div className="mb-6 text-center flex flex-col items-center">
+          <div className="relative mb-3 h-16 w-16 rounded-2xl bg-gradient-to-tr from-cyan-500/40 to-blue-600/40 p-[1.5px] shadow-lg shadow-cyan-500/25">
+            <div className="w-full h-full bg-[#05070E] rounded-[14px] flex items-center justify-center p-2 overflow-hidden">
+              <Image
+                src="/cascade-logo.png"
+                alt="CascadeTech Solutions Logo"
+                width={50}
+                height={50}
+                priority
+                className="object-contain"
+              />
+            </div>
+          </div>
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3.5 py-1 text-xs font-medium text-cyan-300">
             <ShieldCheck className="h-4 w-4" />
             Cascade Infrastructure Console
@@ -57,7 +70,7 @@ export default function AdminLoginPage() {
             Admin Portal
           </h1>
           <p className="mt-1.5 text-xs text-slate-400">
-            Sign in to access analytics, section dwell times, and heatmaps
+            Sign in to access analytics, heatmaps, and website CMS
           </p>
         </div>
 

@@ -3,6 +3,8 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import CmsEditor from "@/components/admin/CmsEditor";
 import {
   Activity,
   Users,
@@ -51,7 +53,7 @@ export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [selectedRoute, setSelectedRoute] = useState<string>("all");
-  const [activeTab, setActiveTab] = useState<"overview" | "heatmap" | "dwell">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "heatmap" | "dwell" | "cms">("overview");
 
   const fetchData = async (isManual = false) => {
     if (isManual) setRefreshing(true);
@@ -140,9 +142,17 @@ export default function AdminDashboardPage() {
       <header className="sticky top-0 z-40 border-b border-cyan-500/20 bg-[#070b16]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6">
           <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 font-bold text-white shadow-md shadow-cyan-500/20">
-                C
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="relative h-10 w-10 rounded-xl bg-gradient-to-tr from-cyan-500/40 to-blue-600/40 p-[1.5px] shadow-md shadow-cyan-500/25 group-hover:shadow-cyan-400/40 transition">
+                <div className="w-full h-full bg-[#05070E] rounded-[10px] flex items-center justify-center p-1 overflow-hidden">
+                  <Image
+                    src="/cascade-logo.png"
+                    alt="Cascade Logo"
+                    width={34}
+                    height={34}
+                    className="object-contain"
+                  />
+                </div>
               </div>
               <div>
                 <span className="text-sm font-bold text-white group-hover:text-cyan-400 transition">
@@ -216,6 +226,17 @@ export default function AdminDashboardPage() {
           >
             <Clock className="h-4 w-4" />
             Section Dwell Times
+          </button>
+          <button
+            onClick={() => setActiveTab("cms")}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition ${
+              activeTab === "cms"
+                ? "bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 shadow-sm"
+                : "text-slate-400 hover:text-white hover:bg-slate-900"
+            }`}
+          >
+            <Layers className="h-4 w-4" />
+            Website CMS
           </button>
         </div>
 
@@ -589,6 +610,9 @@ export default function AdminDashboardPage() {
             </div>
           </div>
         )}
+
+        {/* SECTION: Website CMS */}
+        {activeTab === "cms" && <CmsEditor />}
       </main>
     </div>
   );

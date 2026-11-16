@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { Mail, MapPin, ArrowUpRight, ShieldCheck } from "lucide-react";
@@ -18,12 +19,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-14 border-b border-white/[0.07]">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 p-[1.5px]">
-                <div className="w-full h-full bg-[#05070E] rounded-[7px] flex items-center justify-center">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F2FE] to-white font-extrabold text-lg">
-                    C
-                  </span>
+            <Link href="/" className="inline-flex items-center gap-2.5 group">
+              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500/40 to-blue-600/40 p-[1.5px] shadow-sm shadow-cyan-500/20 group-hover:shadow-cyan-400/40 transition-shadow">
+                <div className="w-full h-full bg-[#05070E] rounded-[10px] flex items-center justify-center overflow-hidden p-1">
+                  <Image
+                    src="/cascade-logo.png"
+                    alt="CascadeTech Solutions Logo"
+                    width={34}
+                    height={34}
+                    className="object-contain"
+                  />
                 </div>
               </div>
               <div className="flex flex-col">

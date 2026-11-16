@@ -33,7 +33,7 @@ export async function generateMetadata({
   const title = titles[locale] || titles.en;
 
   return {
-    metadataBase: new URL("https://cascadetech.in"),
+    metadataBase: new URL("https://www.cascade-erp.in"),
     title: {
       default: title,
       template: `%s | ${SITE_INFO.name}`,
@@ -53,38 +53,63 @@ export async function generateMetadata({
       "Next.js 15 developer",
       "Scalable digital solutions",
     ],
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
+    },
     alternates: {
-      canonical: `https://cascadetech.in/${locale}`,
+      canonical: `https://www.cascade-erp.in/${locale}`,
       languages: {
-        en: "https://cascadetech.in/en",
-        hi: "https://cascadetech.in/hi",
-        kn: "https://cascadetech.in/kn",
-        te: "https://cascadetech.in/te",
-        ta: "https://cascadetech.in/ta",
-        ml: "https://cascadetech.in/ml",
-        mr: "https://cascadetech.in/mr",
-        bn: "https://cascadetech.in/bn",
-        gu: "https://cascadetech.in/gu",
+        en: "https://www.cascade-erp.in/en",
+        hi: "https://www.cascade-erp.in/hi",
+        kn: "https://www.cascade-erp.in/kn",
+        te: "https://www.cascade-erp.in/te",
+        ta: "https://www.cascade-erp.in/ta",
+        ml: "https://www.cascade-erp.in/ml",
+        mr: "https://www.cascade-erp.in/mr",
+        bn: "https://www.cascade-erp.in/bn",
+        gu: "https://www.cascade-erp.in/gu",
       },
     },
     openGraph: {
       type: "website",
       locale: locale,
-      url: `https://cascadetech.in/${locale}`,
+      url: `https://www.cascade-erp.in/${locale}`,
       siteName: SITE_INFO.name,
       title: title,
       description:
         "Delivering Intelligent and Scalable Digital Solutions from Vidya-Nagar, Hubballi, Karnataka.",
+      images: [
+        {
+          url: "https://www.cascade-erp.in/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "CascadeTech Solutions — Delivering Intelligent & Scalable Digital Solutions",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: title,
       description:
         "Delivering Intelligent and Scalable Digital Solutions from Vidya-Nagar, Hubballi.",
+      images: ["https://www.cascade-erp.in/og-image.png"],
     },
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   };
 }
@@ -111,20 +136,101 @@ export default async function LocaleLayout({
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: SITE_INFO.name,
-    description: SITE_INFO.tagline,
-    url: `https://cascadetech.in/${locale}`,
-    email: SITE_INFO.email,
-    telephone: SITE_INFO.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Vidya-Nagar",
-      addressLocality: "Hubballi",
-      addressRegion: "Karnataka",
-      postalCode: "580021",
-      addressCountry: "IN",
-    },
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.cascade-erp.in/#organization",
+        name: SITE_INFO.name,
+        legalName: "CascadeTech Solutions",
+        url: "https://www.cascade-erp.in",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.cascade-erp.in/cascade-logo.png",
+          width: 854,
+          height: 854,
+        },
+        image: "https://www.cascade-erp.in/og-image.png",
+        description: SITE_INFO.tagline,
+        email: SITE_INFO.email,
+        telephone: SITE_INFO.phone,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Vidya-Nagar",
+          addressLocality: "Hubballi",
+          addressRegion: "Karnataka",
+          postalCode: "580021",
+          addressCountry: "IN",
+        },
+        sameAs: [
+          SITE_INFO.socials.github,
+          SITE_INFO.socials.linkedin,
+          SITE_INFO.socials.twitter,
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.cascade-erp.in/#website",
+        url: "https://www.cascade-erp.in",
+        name: "CascadeTech Solutions",
+        description: "Delivering Intelligent and Scalable Digital Solutions",
+        publisher: {
+          "@id": "https://www.cascade-erp.in/#organization",
+        },
+        inLanguage: ["en", "hi", "kn", "te", "ta", "ml", "mr", "bn", "gu"],
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "Educore ERP",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Cloud / Web",
+        url: "https://www.cascade-erp.in/educore",
+        description:
+          "Enterprise multi-tenant school operating system with statutory India DPDP Act 2023 compliance, double-entry finance, automated CBSE report cards, and student attendance.",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "INR",
+        },
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "Nestora Hub",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Cloud / Web",
+        url: "https://www.cascade-erp.in/nestorahub",
+        description:
+          "AI-powered real estate and property discovery ecosystem connecting buyers, tenants, and developers across North Karnataka with verified listings and sub-second search.",
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What digital solutions does CascadeTech Solutions offer?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "CascadeTech Solutions specializes in custom website development, enterprise software engineering, UI/UX design, AI chatbots, cloud architecture, and flagship SaaS products including Educore ERP and Nestora Hub.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Where is CascadeTech Solutions located?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "CascadeTech Solutions is headquartered in Vidya-Nagar, Hubballi, Karnataka 580021, India.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What are CascadeTech Solutions' flagship products?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Our live flagship products are Educore ERP (complete school operating system with DPDP Act 2023 compliance) and Nestora Hub (comprehensive property and real estate ecosystem).",
+            },
+          },
+        ],
+      },
+    ],
   };
 
   return (

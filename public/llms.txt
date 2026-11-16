@@ -1,0 +1,54 @@
+# CascadeTech Solutions
+
+> Delivering Intelligent and Scalable Digital Solutions from Vidya-Nagar, Hubballi, Karnataka, India.
+
+CascadeTech Solutions is an engineering and digital product innovation firm specializing in enterprise software, applied AI systems, custom web architecture, and multi-tenant cloud platforms.
+
+## Canonical Information
+- Website: https://www.cascade-erp.in
+- Headquarters: Vidya-Nagar, Hubballi, Karnataka 580021, India
+- Email: cascadetechnologiessolutions@gmail.com
+- Telephone: +91 836 295 4488
+- Supported Locales: English, Hindi, Kannada, Telugu, Tamil, Malayalam, Marathi, Bengali, Gujarati
+
+## Flagship Products
+
+### 1. Educore ERP (Multi-Tenant School Operating System)
+- URL: https://www.cascade-erp.in/educore
+- Overview: An enterprise-grade multi-tenant school ERP engineered with statutory compliance for India's Digital Personal Data Protection (DPDP) Act 2023.
+- Core Capabilities:
+  - 100% DPDP Act 2023 statutory consent workflows & zero-trust isolation
+  - Double-entry automated school fee management & fee-drift prevention
+  - EPFO ECR text format export & payroll engine
+  - Automated CBSE report cards & student attendance
+  - Multi-role dashboards: Super Admin, School Principal, Teachers, Accountants, Parents, Students
+
+### 2. Nestora Hub (Real Estate & Property Discovery Ecosystem)
+- URL: https://www.cascade-erp.in/nestorahub
+- Overview: Next-generation property discovery platform connecting buyers, sellers, and tenants with verified property listings across North Karnataka.
+- Core Capabilities:
+  - Sub-second search indexing and smart property filters
+  - 500+ verified residential and commercial listings
+  - Direct inquiry turnaround within 2 hours
+  - Interactive map integration and virtual tour scheduling
+
+## Core Engineering Services
+1. Custom Website Development: High-performance Next.js and React web platforms with sub-second page loads.
+2. Web Design & UI/UX: Dark-mode aesthetic design systems, responsive wireframes, and design token architectures.
+3. AI & Chatbot Development: Custom LLM integrations, retrieval-augmented generation (RAG), and agentic workflows.
+4. Custom Software Development: Tailored ERP, CRM, and internal tooling for enterprise workflows.
+5. Mobile App Engineering: Native and cross-platform iOS and Android mobile solutions.
+6. Enterprise Systems Integration: Seamless legacy modernization, API gateways, and payment processing.
+7. Cloud Architecture & DevOps: Resilient CI/CD pipelines, containerization, and cost-effective hosted cloud infrastructure.
+
+## Credibility Metrics
+- Years in Innovation: 2+ Years
+- Enterprise Projects Delivered: 10+ Projects
+- Live Flagship SaaS Products: 2 (Educore ERP & Nestora Hub)
+- Client Retention & Satisfaction: 99.4%
+
+## Contact & Inquiries
+To engage our software consultants or request an enterprise demo:
+- Web Contact: https://www.cascade-erp.in/contact
+- Direct Email: cascadetechnologiessolutions@gmail.com
+- Phone: +91 836 295 4488

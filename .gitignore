@@ -28,6 +28,9 @@ yarn-error.log*
 # analytics local store
 .analytics-data/
 
+# cms local store
+.cms-data/
+
 # vercel
 .vercel
 

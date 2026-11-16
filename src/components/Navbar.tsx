@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
@@ -49,11 +50,16 @@ export default function Navbar() {
             href="/"
             className="flex items-center gap-2.5 group transition-transform duration-200 shrink-0"
           >
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 p-[1.5px] shadow-sm shadow-cyan-500/20 group-hover:shadow-cyan-400/40 transition-shadow">
-              <div className="w-full h-full bg-[#05070E] rounded-[7px] flex items-center justify-center">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F2FE] to-white font-extrabold text-lg tracking-wider">
-                  C
-                </span>
+            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500/40 to-blue-600/40 p-[1.5px] shadow-sm shadow-cyan-500/25 group-hover:shadow-cyan-400/50 transition-shadow">
+              <div className="w-full h-full bg-[#05070E] rounded-[10px] flex items-center justify-center overflow-hidden p-1">
+                <Image
+                  src="/cascade-logo.png"
+                  alt="CascadeTech Solutions Logo"
+                  width={34}
+                  height={34}
+                  priority
+                  className="object-contain transform group-hover:scale-105 transition-transform duration-200"
+                />
               </div>
             </div>
             <div className="flex flex-col">
