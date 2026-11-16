@@ -2,32 +2,39 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { StatItem } from "@/data/siteData";
 
-export default function StatsBar() {
+export default function StatsBar({ cmsStats }: { cmsStats?: StatItem[] }) {
   const t = useTranslations("stats");
 
-  const statItems = [
-    {
-      value: t("stat1Value"),
-      label: t("stat1Label"),
-      sub: "Hubballi & Beyond",
-    },
-    {
-      value: t("stat2Value"),
-      label: t("stat2Label"),
-      sub: "Web, AI & Software",
-    },
-    {
-      value: t("stat3Value"),
-      label: t("stat3Label"),
-      sub: "Educore & Nestora Hub",
-    },
-    {
-      value: t("stat4Value"),
-      label: t("stat4Label"),
-      sub: "Enterprise Reliability",
-    },
-  ];
+  const statItems = (cmsStats && cmsStats.length > 0)
+    ? cmsStats.map((s) => ({
+        value: s.value,
+        label: s.label,
+        sub: (s as any).sub || s.description || "",
+      }))
+    : [
+        {
+          value: t("stat1Value"),
+          label: t("stat1Label"),
+          sub: "Hubballi & Beyond",
+        },
+        {
+          value: t("stat2Value"),
+          label: t("stat2Label"),
+          sub: "Web, AI & Software",
+        },
+        {
+          value: t("stat3Value"),
+          label: t("stat3Label"),
+          sub: "Educore & Nestora Hub",
+        },
+        {
+          value: t("stat4Value"),
+          label: t("stat4Label"),
+          sub: "Enterprise Reliability",
+        },
+      ];
 
   return (
     <section className="relative py-12 border-y border-white/[0.08] bg-[#070b13]/80 backdrop-blur-xl">

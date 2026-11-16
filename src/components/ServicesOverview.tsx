@@ -13,12 +13,40 @@ import {
   RefreshCw,
   ArrowRight,
   ChevronRight,
+  Layers,
+  Code,
+  Smartphone,
+  Cloud,
+  Database,
+  Building2,
+  LucideIcon,
 } from "lucide-react";
+import { ServiceItem } from "@/data/siteData";
 
-export default function ServicesOverview() {
+const ICON_MAP: Record<string, LucideIcon> = {
+  Globe,
+  Palette,
+  Cpu,
+  Bot,
+  Sparkles,
+  GraduationCap,
+  RefreshCw,
+  Layers,
+  Code,
+  Smartphone,
+  Cloud,
+  Database,
+  Building2,
+};
+
+export default function ServicesOverview({
+  cmsServices,
+}: {
+  cmsServices?: ServiceItem[];
+}) {
   const t = useTranslations("services");
 
-  const servicesList = [
+  const defaultServicesList = [
     {
       id: "website-dev",
       slug: "custom-website-development",
@@ -62,6 +90,21 @@ export default function ServicesOverview() {
       icon: Sparkles,
     },
   ];
+
+  const servicesList =
+    cmsServices && cmsServices.length > 0
+      ? cmsServices.map((s) => {
+          const iconKey = s.iconName;
+          const IconComp = (iconKey && ICON_MAP[iconKey]) ? ICON_MAP[iconKey] : Globe;
+          return {
+            id: s.id,
+            slug: s.slug,
+            title: s.title,
+            desc: s.shortDescription,
+            icon: IconComp,
+          };
+        })
+      : defaultServicesList;
 
   return (
     <section id="services" className="py-24 relative bg-[#04060b] border-t border-white/[0.06]">

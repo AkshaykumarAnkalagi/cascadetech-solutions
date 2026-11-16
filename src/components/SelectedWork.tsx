@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { ArrowUpRight, CheckCircle2, Sparkles, ExternalLink } from "lucide-react";
+import { ProjectItem } from "@/data/siteData";
 
-export default function SelectedWork() {
+export default function SelectedWork({ cmsProjects }: { cmsProjects?: ProjectItem[] }) {
   const t = useTranslations("work");
 
-  const projects = [
+  const defaultProjects = [
     {
       id: "educore",
       slug: "educore",
@@ -42,6 +43,21 @@ export default function SelectedWork() {
       link: "/nestorahub",
     },
   ];
+
+  const projects = (cmsProjects && cmsProjects.length > 0)
+    ? cmsProjects.map((p) => ({
+        id: p.id,
+        slug: p.slug,
+        title: p.title,
+        category: p.category,
+        tagline: p.shortDescription || p.category,
+        status: p.status || t("badgeLive"),
+        description: p.fullDescription || p.shortDescription || "",
+        features: p.keyFeatures || [],
+        techStack: p.techStack || [],
+        link: p.link || `/${p.slug}`,
+      }))
+    : defaultProjects;
 
   return (
     <section id="work" className="py-24 relative overflow-hidden">
