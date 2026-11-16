@@ -1,7 +1,6 @@
 async function test() {
   const urls = [
     'https://cascade-erp.in',
-    'https://cascade-erp.in/',
     'https://www.cascade-erp.in',
     'https://www.cascade-erp.in/en'
   ];
@@ -15,10 +14,12 @@ async function test() {
       }
     });
     console.log('Final URL:', res.url, 'Status:', res.status);
+    console.log('Cache-Control:', res.headers.get('cache-control'));
+    console.log('x-vercel-cache:', res.headers.get('x-vercel-cache'));
     const html = await res.text();
-    console.log('Has ambient shade (from-cyan-400/35):', html.includes('from-cyan-400/35'));
-    console.log('Has new width 104:', html.includes('width="104"'));
-    console.log('Has new height lg:h-[84px]:', html.includes('lg:h-[84px]'));
+    console.log('Has GovOS:', html.includes('GovOS'));
+    console.log('Has Educore:', html.includes('Educore'));
+    console.log('Has Nestora:', html.includes('Nestora Hub'));
     console.log('Has og:image (jpg):', html.includes('og-image.jpg'));
   }
 }
