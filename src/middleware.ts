@@ -7,12 +7,13 @@ const intlMiddleware = createMiddleware(routing);
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Explicitly bypass next-intl for admin, api, educore, nestorahub, studio
+  // Explicitly bypass next-intl for admin, api, educore, nestorahub, govos, studio
   if (
     pathname.startsWith("/admin") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/educore") ||
     pathname.startsWith("/nestorahub") ||
+    pathname.startsWith("/govos") ||
     pathname.startsWith("/studio")
   ) {
     // If accessing /admin dashboard directly without session cookie, redirect to /admin/login
@@ -35,12 +36,13 @@ export const config = {
   // - /studio routes (Sanity CMS)
   // - /educore routes (Flagship ERP product)
   // - /nestorahub routes (Flagship Real Estate product)
+  // - /govos routes (Flagship Civic Governance product)
   // - /_next (Next.js internals)
   // - /_vercel (Vercel internals)
   // - static files (e.g. /favicon.ico, /images/*, etc.)
   matcher: [
     "/",
     "/(en|hi|kn|te|ta|ml|mr|bn|gu)/:path*",
-    "/((?!api|admin|studio|educore|nestorahub|_next|_vercel|.*\\..*).*)",
+    "/((?!api|admin|studio|educore|nestorahub|govos|_next|_vercel|.*\\..*).*)",
   ],
 };

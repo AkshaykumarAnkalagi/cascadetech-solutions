@@ -77,9 +77,9 @@ export const STATS: StatItem[] = [
   },
   {
     id: "products",
-    value: "2",
+    value: "3",
     label: "Live Flagship Products",
-    description: "Educore & Nestora Hub deployed globally",
+    description: "Educore, Nestora Hub & GovOS deployed globally",
   },
   {
     id: "satisfaction",
@@ -160,6 +160,42 @@ export const PROJECTS: ProjectItem[] = [
     status: "Live Product",
     featured: true,
     accentColor: "#38BDF8",
+  },
+  {
+    id: "govos",
+    slug: "govos",
+    title: "GovOS",
+    category: "Multi-Tenant Civic Governance Operating System",
+    tagline: "Urban Local Bodies • DPDP Compliant • Real-Time Civic Intelligence",
+    shortDescription:
+      "Next-generation multi-tenant civic operating system empowering municipalities, panchayats, and urban local bodies with real-time grievance tracking, GIS ward intelligence, and DPDP-compliant citizen data vaults.",
+    fullDescription:
+      "GovOS is a browser-based Web OS shell providing elected representatives, municipal officers, and citizens with a unified real-time governance layer. Engineered with complete tenant data isolation, statutory DPDP 2023 compliance, GIS asset tracking, and automated multi-channel SLA notifications across hundreds of civic administrative bodies.",
+    metrics: [
+      { label: "Grievance SLA Turnaround", value: "<24 hrs" },
+      { label: "Citizen Trust Index", value: "99.2%" },
+      { label: "Tenant Isolation", value: "100% MTAS" },
+    ],
+    keyFeatures: [
+      "Multi-tenant architecture (MTAS) with isolated PostgreSQL schemas and tenant RBAC",
+      "11 integrated civic modules: Grievances, Public Works, GIS Maps, and Departmental MIS",
+      "Statutory DPDP Act 2023 consent workflows and encrypted citizen PII vaults",
+      "Real-time WebSocket event bridge with multi-channel SMS and WhatsApp notifications",
+    ],
+    techStack: [
+      "React 18",
+      "TypeScript",
+      "Java 21 / Spring Boot",
+      "NestJS",
+      "Python FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "Leaflet Maps",
+    ],
+    link: "/govos",
+    status: "Live Product",
+    featured: true,
+    accentColor: "#10B981",
   },
 ];
 

@@ -39,7 +39,7 @@ export async function generateMetadata({
       template: `%s | ${SITE_INFO.name}`,
     },
     description:
-      "CascadeTech Solutions delivers intelligent and scalable digital solutions from Vidya-Nagar, Hubballi, Karnataka. Custom website development, web design & UI/UX, enterprise software, AI chatbots, Educore ERP & Nestora Hub.",
+      "CascadeTech Solutions delivers intelligent and scalable digital solutions from Vidya-Nagar, Hubballi, Karnataka. Custom website development, web design & UI/UX, enterprise software, AI chatbots, Educore ERP, Nestora Hub & GovOS.",
     keywords: [
       "CascadeTech Solutions",
       "Hubballi software company",
@@ -50,9 +50,15 @@ export async function generateMetadata({
       "Custom Software Development",
       "Educore ERP",
       "Nestora Hub",
+      "GovOS",
+      "Civic Governance Operating System",
+      "Municipal ERP",
       "Next.js 15 developer",
       "Scalable digital solutions",
     ],
+    other: {
+      "revisit-after": "1 days",
+    },
     icons: {
       icon: [
         { url: "/favicon.ico", sizes: "any" },
@@ -212,6 +218,15 @@ export default async function LocaleLayout({
           "AI-powered real estate and property discovery ecosystem connecting buyers, tenants, and developers across North Karnataka with verified listings and sub-second search.",
       },
       {
+        "@type": "SoftwareApplication",
+        name: "GovOS",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Cloud / Web",
+        url: "https://www.cascade-erp.in/govos",
+        description:
+          "Multi-tenant civic governance operating system empowering municipalities, panchayats, and urban local bodies with real-time grievance tracking, GIS ward intelligence, and DPDP 2023 compliance.",
+      },
+      {
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -219,7 +234,7 @@ export default async function LocaleLayout({
             name: "What digital solutions does CascadeTech Solutions offer?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "CascadeTech Solutions specializes in custom website development, enterprise software engineering, UI/UX design, AI chatbots, cloud architecture, and flagship SaaS products including Educore ERP and Nestora Hub.",
+              text: "CascadeTech Solutions specializes in custom website development, enterprise software engineering, UI/UX design, AI chatbots, cloud architecture, and flagship SaaS products including Educore ERP, Nestora Hub, and GovOS.",
             },
           },
           {
@@ -235,7 +250,7 @@ export default async function LocaleLayout({
             name: "What are CascadeTech Solutions' flagship products?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Our live flagship products are Educore ERP (complete school operating system with DPDP Act 2023 compliance) and Nestora Hub (comprehensive property and real estate ecosystem).",
+              text: "Our live flagship products are Educore ERP (complete school operating system with DPDP Act 2023 compliance), Nestora Hub (comprehensive property and real estate ecosystem), and GovOS (multi-tenant civic governance operating system).",
             },
           },
         ],

@@ -78,7 +78,13 @@
     "nestoraDesc": "Comprehensive property discovery and real estate management ecosystem facilitating seamless buying, selling, and renting across residential and commercial sectors.",
     "nestoraFeat1": "Curated & Verified Residential and Commercial Listings",
     "nestoraFeat2": "Intelligent Locality-Wise Search & Virtual Tour Inquiries",
-    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows"
+    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows",
+    "govosCategory": "ಮಲ್ಟಿ-ಟೆನೆಂಟ್ ನಾಗರಿಕ ಆಡಳಿತ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್",
+    "govosTitle": "GovOS",
+    "govosDesc": "ನಗರಸಭೆಗಳು ಮತ್ತು ಪುರಸಭೆಗಳಿಗೆ ನೈಜ-ಸಮಯದ ಕುಂದುಕೊರತೆ ಪರಿಹಾರ, ಜಿಐಎಸ್ ವಾರ್ಡ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ಮತ್ತು ಡಿಪಿಡಿಪಿ-ಅನುಸರಣೆಯ ನಾಗರಿಕ ಡೇಟಾ ವಾಲ್ಟ್‌ಗಳನ್ನು ಸಶಕ್ತಗೊಳಿಸುವ ಮುಂದಿನ ಪೀಳಿಗೆಯ ಆಡಳಿತ ವ್ಯವಸ್ಥೆ.",
+    "govosFeat1": "100% ಟೆನೆಂಟ್ ಪ್ರತ್ಯೇಕತೆಯೊಂದಿಗೆ ಮಲ್ಟಿ-ಟೆನೆಂಟ್ ಆರ್ಕಿಟೆಕ್ಚರ್",
+    "govosFeat2": "ಸ್ವಯಂಚಾಲಿತ ಎಸ್‌ಎಲ್‌ಎ ಎಚ್ಚರಿಕೆಗಳೊಂದಿಗೆ ನೈಜ-ಸಮಯದ ಕುಂದುಕೊರತೆ ಪರಿಹಾರ",
+    "govosFeat3": "ಡಿಪಿಡಿಪಿ 2023 ಶಾಸನಬದ್ಧ ಡೇಟಾ ಸಂರಕ್ಷಣೆ ಮತ್ತು ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ ಪಿಐಐ ವಾಲ್ಟ್‌ಗಳು"
   },
   "services": {
     "eyebrow": "ನಾವು ಒದಗಿಸುವ ಸೇವೆಗಳು",
@@ -194,4 +200,3 @@
     "pipeline2Desc": "ಭಾರತದ ಟೈರ್-2 ಮತ್ತು ಟೈರ್-3 ವಾಣಿಜ್ಯ ಕೇಂದ್ರಗಳಿಗಾಗಿ ಮುನ್ಸೂಚಕ ದಾಸ್ತಾನು ಲಾಜಿಸ್ಟಿಕ್ಸ್ ವ್ಯವಸ್ಥೆ."
   }
 }
-

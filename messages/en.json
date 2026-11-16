@@ -78,7 +78,13 @@
     "nestoraDesc": "Comprehensive property discovery and real estate management ecosystem facilitating seamless buying, selling, and renting across residential and commercial sectors.",
     "nestoraFeat1": "Curated & Verified Residential and Commercial Listings",
     "nestoraFeat2": "Intelligent Locality-Wise Search & Virtual Tour Inquiries",
-    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows"
+    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows",
+    "govosCategory": "MULTI-TENANT CIVIC GOVERNANCE OPERATING SYSTEM",
+    "govosTitle": "GovOS",
+    "govosDesc": "Next-generation multi-tenant civic operating system empowering municipalities and urban local bodies with real-time grievance tracking, GIS ward intelligence, and DPDP-compliant citizen data vaults.",
+    "govosFeat1": "Multi-Tenant Architecture with 100% Tenant Isolation",
+    "govosFeat2": "Real-Time Grievance Redressal with Automated SLA Alerts",
+    "govosFeat3": "DPDP 2023 Statutory Data Protection & Encrypted PII Vaults"
   },
   "services": {
     "eyebrow": "WHAT WE DELIVER",
@@ -194,4 +200,3 @@
     "pipeline2Desc": "Predictive inventory logistics framework tailored for Tier-2 and Tier-3 Indian commerce hubs."
   }
 }
-

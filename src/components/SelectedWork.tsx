@@ -42,6 +42,22 @@ export default function SelectedWork({ cmsProjects }: { cmsProjects?: ProjectIte
       techStack: ["React", "Vite", "TypeScript", "Tailwind CSS", "shadcn/ui", "Node.js"],
       link: "/nestorahub",
     },
+    {
+      id: "govos",
+      slug: "govos",
+      title: t("govosTitle"),
+      category: t("govosCategory"),
+      tagline: "Urban Local Bodies • DPDP Compliant • Real-Time Civic Intelligence",
+      status: t("badgeLive"),
+      description: t("govosDesc"),
+      features: [
+        t("govosFeat1"),
+        t("govosFeat2"),
+        t("govosFeat3"),
+      ],
+      techStack: ["React 18", "TypeScript", "Spring Boot", "NestJS", "FastAPI", "PostgreSQL"],
+      link: "/govos",
+    },
   ];
 
   const projects = (cmsProjects && cmsProjects.length > 0)
@@ -91,7 +107,7 @@ export default function SelectedWork({ cmsProjects }: { cmsProjects?: ProjectIte
         </div>
 
         {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
             <motion.div
               key={project.id}

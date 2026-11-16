@@ -78,7 +78,13 @@
     "nestoraDesc": "Comprehensive property discovery and real estate management ecosystem facilitating seamless buying, selling, and renting across residential and commercial sectors.",
     "nestoraFeat1": "Curated & Verified Residential and Commercial Listings",
     "nestoraFeat2": "Intelligent Locality-Wise Search & Virtual Tour Inquiries",
-    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows"
+    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows",
+    "govosCategory": "मल्टी-टेनेंट नागरिक शासन ऑपरेटिंग सिस्टम",
+    "govosTitle": "GovOS",
+    "govosDesc": "नगर पालिकाओं और शहरी स्थानीय निकायों को रीयल-टाइम शिकायत निवारण, जीआईएस वार्ड इंटेलिजेंस और डीपीडीपी-अनुरूप नागरिक डेटा वॉल्ट प्रदान करने वाला अगली पीढ़ी का नागरिक ऑपरेटिंग सिस्टम।",
+    "govosFeat1": "100% टेनेंट अलगाव के साथ मल्टी-टेनेंट आर्किटेक्चर",
+    "govosFeat2": "स्वचालित एसएलए अलर्ट के साथ रीयल-टाइम शिकायत निवारण",
+    "govosFeat3": "डीपीडीपी 2023 वैधानिक डेटा सुरक्षा और एन्क्रिप्टेड पीआईआई वॉल्ट"
   },
   "services": {
     "eyebrow": "हम क्या प्रदान करते हैं",
@@ -194,4 +200,3 @@
     "pipeline2Desc": "भारत के टियर-2 और टियर-3 वाणिज्य केंद्रों के लिए पूर्वानुमानात्मक इन्वेंट्री लॉजिस्टिक्स ढांचा।"
   }
 }
-

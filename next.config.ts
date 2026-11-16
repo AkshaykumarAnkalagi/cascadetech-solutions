@@ -20,6 +20,8 @@ const educoreUrl =
   formatUrl(process.env.EDUCORE_FRONTEND_URL) || "https://edu-core-um1o.onrender.com";
 const nestoraUrl =
   formatUrl(process.env.NESTORAHUB_FRONTEND_URL) || "https://nestora-egk4.vercel.app";
+const govosUrl =
+  formatUrl(process.env.GOVOS_FRONTEND_URL) || "https://mayu1344.github.io/CIVIC1.1";
 
 const nextConfig: NextConfig = {
   ...(isGithubPages ? { output: "export", basePath: "/cascadetech-solutions" } : {}),
@@ -37,6 +39,33 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+  },
+  async headers() {
+    if (isGithubPages) return [];
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate, s-maxage=0",
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "index, follow, max-image-preview:large, max-snippet:-1",
+          },
+        ],
+      },
+      {
+        source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
   },
   async rewrites() {
     if (isGithubPages) return [];
@@ -69,6 +98,14 @@ const nextConfig: NextConfig = {
         {
           source: "/assets/:path*",
           destination: `${nestoraUrl}/assets/:path*`,
+        },
+        {
+          source: "/govos",
+          destination: `${govosUrl}`,
+        },
+        {
+          source: "/govos/:path*",
+          destination: `${govosUrl}/:path*`,
         },
       ],
       afterFiles: [],

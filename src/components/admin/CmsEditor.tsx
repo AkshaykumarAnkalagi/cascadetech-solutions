@@ -354,7 +354,7 @@ export default function CmsEditor() {
               <div>
                 <h3 className="text-sm font-bold text-white">Flagship Products & Case Studies</h3>
                 <p className="text-xs text-slate-400">
-                  Manage Educore ERP, Nestora Hub, and active projects
+                  Manage Educore ERP, Nestora Hub, GovOS, and active flagship projects
                 </p>
               </div>
               <button

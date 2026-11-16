@@ -193,6 +193,21 @@ export default function Footer() {
                   Real estate discovery & property ecosystem
                 </p>
               </li>
+
+              <li className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+                <Link
+                  href="/govos"
+                  className="text-white font-semibold text-sm hover:text-[#00F2FE] flex items-center justify-between"
+                >
+                  <span>GovOS</span>
+                  <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800/40">
+                    Live
+                  </span>
+                </Link>
+                <p className="text-xs text-zinc-400 mt-1 line-clamp-2">
+                  Civic governance & municipal operating system
+                </p>
+              </li>
             </ul>
           </div>
         </div>

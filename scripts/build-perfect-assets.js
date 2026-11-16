@@ -158,6 +158,13 @@ async function buildAll() {
         <text x="139" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">LIVE</text>
       </g>
 
+      <g transform="translate(870, 385)">
+        <rect width="180" height="44" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+        <text x="16" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#ffffff">GovOS</text>
+        <rect x="110" y="11" width="55" height="22" rx="6" fill="#059669" fill-opacity="0.3"/>
+        <text x="119" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#34d399">LIVE</text>
+      </g>
+
       <!-- Domain link -->
       <text x="440" y="485" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#00F2FE">
         https://www.cascade-erp.in

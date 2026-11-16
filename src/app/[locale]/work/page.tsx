@@ -70,6 +70,27 @@ function WorkContent() {
       techStack: ["React", "Vite", "TypeScript", "Tailwind CSS", "shadcn/ui", "Node.js API", "TanStack Query"],
       link: "/nestorahub",
     },
+    {
+      id: "govos",
+      title: tWork("govosTitle"),
+      category: tWork("govosCategory"),
+      status: tWork("badgeLive"),
+      desc: tWork("govosDesc"),
+      highlights: [
+        tWork("govosFeat1"),
+        tWork("govosFeat2"),
+        tWork("govosFeat3"),
+        "Statutory DPDP Act 2023 Encrypted Citizen Data Vaults",
+        "GIS Ward Mapping with Real-Time SLA Notifications & WebSocket Bridge",
+      ],
+      metrics: [
+        { label: "Grievance Turnaround", value: "<24 hrs" },
+        { label: "Citizen Trust Index", value: "99.2%" },
+        { label: "Tenant Isolation", value: "100% MTAS" },
+      ],
+      techStack: ["React 18", "Java 21 / Spring Boot", "NestJS", "FastAPI", "PostgreSQL", "Redis", "Leaflet Maps"],
+      link: "/govos",
+    },
   ];
 
   const pipeline = [

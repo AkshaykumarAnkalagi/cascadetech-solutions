@@ -78,7 +78,13 @@
     "nestoraDesc": "Comprehensive property discovery and real estate management ecosystem facilitating seamless buying, selling, and renting across residential and commercial sectors.",
     "nestoraFeat1": "Curated & Verified Residential and Commercial Listings",
     "nestoraFeat2": "Intelligent Locality-Wise Search & Virtual Tour Inquiries",
-    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows"
+    "nestoraFeat3": "Integrated Admin Console & Property Management Workflows",
+    "govosCategory": "பல்முனைய குடிமை நிர்வாக இயக்க முறைமை",
+    "govosTitle": "GovOS",
+    "govosDesc": "நகராட்சிகள் மற்றும் உள்ளாட்சி அமைப்புகளுக்கு நிகழ்நேர குறைதீர்ப்பு, ஜிஐஎஸ் வார்டு நுண்ணறிவு மற்றும் டிபிடிபி-இணக்கமான குடிமக்கள் தரவு பெட்டகங்களை வழங்கும் அடுத்த தலைமுறை நிர்வாக அமைப்பு.",
+    "govosFeat1": "100% தனிமைப்படுத்தலுடன் கூடிய பல-குத்தகை கட்டமைப்பு",
+    "govosFeat2": "தானியங்கி எஸ்எல்ஏ எச்சரிக்கைகளுடன் நிகழ்நேர குறைதீர்ப்பு",
+    "govosFeat3": "டிபிடிபி 2023 சட்டப்பூர்வ தரவு பாதுகாப்பு மற்றும் மறைகுறியாக்கப்பட்ட பிஐஐ பெட்டகங்கள்"
   },
   "services": {
     "eyebrow": "நாங்கள் வழங்குவது",
@@ -194,4 +200,3 @@
     "pipeline2Desc": "இந்தியாவின் அடுக்கு-2 மற்றும் அடுக்கு-3 நகரங்களுக்கான முன்கணிப்பு சரக்கு மேலாண்மை கட்டமைப்பு."
   }
 }
-

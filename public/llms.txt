@@ -32,6 +32,16 @@ CascadeTech Solutions is an engineering and digital product innovation firm spec
   - Direct inquiry turnaround within 2 hours
   - Interactive map integration and virtual tour scheduling
 
+### 3. GovOS (Multi-Tenant Civic Governance Operating System)
+- URL: https://www.cascade-erp.in/govos
+- Overview: A browser-based Web OS shell providing elected representatives, municipal officers, and citizens with a unified real-time governance and civic service delivery layer.
+- Core Capabilities:
+  - Multi-tenant architecture (MTAS) with complete data isolation for municipalities and urban local bodies
+  - 11 integrated civic modules: Complaints, Public Works, Ward Mapping, and Departmental MIS
+  - Statutory India DPDP Act 2023 compliance & encrypted citizen PII vaults
+  - Real-time WebSocket event bridge with multi-channel SMS/WhatsApp alerts
+  - Grievance SLA turnaround under 24 hours with 99.2% citizen satisfaction index
+
 ## Core Engineering Services
 1. Custom Website Development: High-performance Next.js and React web platforms with sub-second page loads.
 2. Web Design & UI/UX: Dark-mode aesthetic design systems, responsive wireframes, and design token architectures.
@@ -44,7 +54,7 @@ CascadeTech Solutions is an engineering and digital product innovation firm spec
 ## Credibility Metrics
 - Years in Innovation: 2+ Years
 - Enterprise Projects Delivered: 10+ Projects
-- Live Flagship SaaS Products: 2 (Educore ERP & Nestora Hub)
+- Live Flagship SaaS Products: 3 (Educore ERP, Nestora Hub & GovOS)
 - Client Retention & Satisfaction: 99.4%
 
 ## Contact & Inquiries

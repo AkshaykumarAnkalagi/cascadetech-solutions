@@ -85,6 +85,15 @@ export const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
       "Nestora Hub provides verified real estate discovery that cut our client onboarding turnaround from days to under two hours.",
     rating: 5,
   },
+  {
+    id: "test-3",
+    author: "Suresh Patil",
+    role: "Commissioner",
+    company: "Urban Local Bodies & Civic Administration",
+    quote:
+      "GovOS modernized our civic grievance turnaround from weeks to under 24 hours while ensuring full statutory compliance and transparent audit trails.",
+    rating: 5,
+  },
 ];
 
 export const INITIAL_CMS_DATA: WebsiteCmsData = {
