@@ -1,13 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { StatItem } from "@/data/siteData";
 
 export default function StatsBar({ cmsStats }: { cmsStats?: StatItem[] }) {
   const t = useTranslations("stats");
+  const locale = useLocale();
+  const isEn = locale === "en";
 
-  const statItems = (cmsStats && cmsStats.length > 0)
+  const statItems = (isEn && cmsStats && cmsStats.length > 0)
     ? cmsStats.map((s) => ({
         value: s.value,
         label: s.label,
@@ -27,7 +29,7 @@ export default function StatsBar({ cmsStats }: { cmsStats?: StatItem[] }) {
         {
           value: t("stat3Value"),
           label: t("stat3Label"),
-          sub: "Educore & Nestora Hub",
+          sub: "Educore, Nestora Hub & GovOS",
         },
         {
           value: t("stat4Value"),

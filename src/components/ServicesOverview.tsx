@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   Globe,
   Palette,
@@ -45,6 +45,8 @@ export default function ServicesOverview({
   cmsServices?: ServiceItem[];
 }) {
   const t = useTranslations("services");
+  const locale = useLocale();
+  const isEn = locale === "en";
 
   const defaultServicesList = [
     {
@@ -92,7 +94,7 @@ export default function ServicesOverview({
   ];
 
   const servicesList =
-    cmsServices && cmsServices.length > 0
+    isEn && cmsServices && cmsServices.length > 0
       ? cmsServices.map((s) => {
           const iconKey = s.iconName;
           const IconComp = (iconKey && ICON_MAP[iconKey]) ? ICON_MAP[iconKey] : Globe;

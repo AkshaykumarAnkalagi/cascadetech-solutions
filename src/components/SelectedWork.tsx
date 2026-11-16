@@ -2,12 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { ArrowUpRight, CheckCircle2, Sparkles, ExternalLink } from "lucide-react";
 import { ProjectItem } from "@/data/siteData";
 
 export default function SelectedWork({ cmsProjects }: { cmsProjects?: ProjectItem[] }) {
   const t = useTranslations("work");
+  const locale = useLocale();
+  const isEn = locale === "en";
 
   const defaultProjects = [
     {
@@ -60,19 +62,19 @@ export default function SelectedWork({ cmsProjects }: { cmsProjects?: ProjectIte
     },
   ];
 
-  const projects = (cmsProjects && cmsProjects.length > 0)
+  const projects = (isEn && cmsProjects && cmsProjects.length > 0)
     ? cmsProjects.map((p) => ({
-        id: p.id,
-        slug: p.slug,
-        title: p.title,
-        category: p.category,
-        tagline: p.shortDescription || p.category,
-        status: p.status || t("badgeLive"),
-        description: p.fullDescription || p.shortDescription || "",
-        features: p.keyFeatures || [],
-        techStack: p.techStack || [],
-        link: p.link || `/${p.slug}`,
-      }))
+      id: p.id,
+      slug: p.slug,
+      title: p.title,
+      category: p.category,
+      tagline: p.shortDescription || p.category,
+      status: p.status || t("badgeLive"),
+      description: p.fullDescription || p.shortDescription || "",
+      features: p.keyFeatures || [],
+      techStack: p.techStack || [],
+      link: p.link || `/${p.slug}`,
+    }))
     : defaultProjects;
 
   return (

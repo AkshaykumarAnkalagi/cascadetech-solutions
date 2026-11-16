@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Bot, Shield, Headphones, Sparkles } from "lucide-react";
 import TechVisual from "./TechVisual";
 import { HeroContent } from "@/lib/cmsTypes";
@@ -13,6 +13,8 @@ interface HeroSectionProps {
 
 export default function HeroSection({ cmsHero }: HeroSectionProps) {
   const t = useTranslations("hero");
+  const locale = useLocale();
+  const isEn = locale === "en";
 
   return (
     <section className="relative min-h-[92vh] pt-32 pb-20 flex items-center justify-center overflow-hidden bg-grid-pattern">
@@ -32,12 +34,12 @@ export default function HeroSection({ cmsHero }: HeroSectionProps) {
             {/* Eyebrow badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#00d4ff] animate-pulse shadow-[0_0_8px_#00d4ff]" />
-              <span>{cmsHero?.eyebrow || t("eyebrow")}</span>
+              <span>{isEn ? (cmsHero?.eyebrow || t("eyebrow")) : t("eyebrow")}</span>
             </div>
 
             {/* Headline */}
             <div className="space-y-3">
-              {cmsHero?.headline && cmsHero.headline !== "Delivering Intelligent and Scalable Digital Solutions" ? (
+              {isEn && cmsHero?.headline && cmsHero.headline !== "Delivering Intelligent and Scalable Digital Solutions" ? (
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.14]">
                   {cmsHero.headline}
                 </h1>
@@ -60,7 +62,7 @@ export default function HeroSection({ cmsHero }: HeroSectionProps) {
 
             {/* Short Description */}
             <p className="text-base sm:text-lg text-zinc-300 max-w-2xl leading-relaxed font-normal">
-              {cmsHero?.description || t("description")}
+              {isEn ? (cmsHero?.description || t("description")) : t("description")}
             </p>
 
             {/* Two CTAs */}
@@ -70,7 +72,7 @@ export default function HeroSection({ cmsHero }: HeroSectionProps) {
                 href={cmsHero?.primaryCtaLink || "/services"}
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm sm:text-base text-black bg-gradient-to-r from-[#00d4ff] via-[#22d3ee] to-[#38bdf8] transition-all duration-300 hover:shadow-[0_0_28px_rgba(0,212,255,0.5)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
-                <span>{cmsHero?.primaryCtaText || t("ctaPrimary")}</span>
+                <span>{isEn ? (cmsHero?.primaryCtaText || t("ctaPrimary")) : t("ctaPrimary")}</span>
                 <Sparkles className="w-4 h-4" />
               </Link>
 
@@ -79,7 +81,7 @@ export default function HeroSection({ cmsHero }: HeroSectionProps) {
                 href={cmsHero?.secondaryCtaLink || "/contact"}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm sm:text-base text-zinc-200 bg-white/[0.04] hover:bg-white/[0.08] border border-cyan-400/40 hover:border-[#00d4ff] hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(0,212,255,0.1)] group cursor-pointer"
               >
-                <span>{cmsHero?.secondaryCtaText || t("ctaSecondary")}</span>
+                <span>{isEn ? (cmsHero?.secondaryCtaText || t("ctaSecondary")) : t("ctaSecondary")}</span>
               </Link>
             </div>
 
